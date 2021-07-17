@@ -46,8 +46,10 @@ MESSAGE_ERROR="This is an invalid argument for $0!\n\n$MESSAGE_HELP"
 dotfiles_install(){
 	dotfiles_remove
 
-	echo -e "Installing Henrik Beck's dotfiles..."
-	git clone $LINK_REPOSITORY $PATH_REPOSITORY
+	if [[ ! -d $PATH_REPOSITORY ]]; then
+		echo -e "Installing Henrik Beck's dotfiles..."
+		git clone $LINK_REPOSITORY $PATH_REPOSITORY
+	fi
 
 	dotfiles_update
 }
@@ -199,7 +201,7 @@ apply_tmux_tpm(){
 
 	#############################
 	#MUST BE FIXED
-	#
+	#This process is being executed before the last process gets completed
 	ln -sf $PATH_DOTFILE/tmux_network.sh $HOME/.tmux/plugins/tmux/scripts/network.sh
 	#wait ln -sf $PATH_DOTFILE/tmux_network.sh $HOME/.tmux/plugins/tmux/scripts/network.sh
 	#tmux source $APPLICATION_PATH && run -b $HOME/.tmux/plugins/tpm/tpm
