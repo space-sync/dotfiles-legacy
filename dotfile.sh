@@ -9,12 +9,10 @@ AUX1=$1
 LINK_REPOSITORY="https://github.com/henrikbeck95/dotfiles.git"
 PATH_REPOSITORY=$HOME/.dotfile
 PATH_DOTFILE=$PATH_REPOSITORY/src
-#PATH_DOTFILE_LOG=$HOME/.dotfile.log
 PATH_DOTFILE_LOG=/var/log/dotfile
 PATH_DOTFILE_LOG_TEMP=/tmp/dotfile_log_temp
 PATH_DOTFILE_REMOVE=/tmp/dotfile_log_remove
 PATH_SCRIPT=${BASH_SOURCE%}
-#PATH_SCRIPT=$_
 
 MESSAGE_HELP="
 \t-------------------------------------
@@ -35,11 +33,10 @@ So, consider to backup your dotfiles before moving forward.
 -e,\t--edit\t\t\tEdit this file
 -i,\t--install\t\tApply dotfiles
 -l,\t--list\t\t\tList all linked dotfiles
--r,\t--remove\t\tRemove dotfiles (IMPLEMENTING)
+-r,\t--remove\t\tRemove dotfiles
 -rr,\t--remove-all\t\tRemove all dotfiles
 -u,\t--update\t\tUpdate dotfiles"
 
-#dotfiles_remove_all
 MESSAGE_ERROR="This is an invalid argument for $0!\n\n$MESSAGE_HELP"
 
 #############################
@@ -79,6 +76,7 @@ dotfiles_update(){
 	apply_xresources
 
 	column -t -s '|' $PATH_DOTFILE_LOG_TEMP > $PATH_DOTFILE_LOG
+	rm $PATH_DOTFILE_LOG_TEMP
 }
 
 dotfiles_remove(){
@@ -97,12 +95,14 @@ dotfiles_remove(){
 			fi
 		done < $PATH_DOTFILE_REMOVE
 	fi
+
+	rm $PATH_DOTFILE_REMOVE
 }
 
 dotfiles_remove_all(){
 	if [[ -d $PATH_DOTFILE ]]; then
 		echo -e "Removing Henrik Beck's old dotfiles..."
-		rm -fr $PATH_DOTFILE/
+		rm -fr $PATH_REPOSITORY/
 	fi
 	
 	dotfiles_remove
@@ -184,10 +184,6 @@ apply_tmux(){
 	echo -e "$APPLICATION_NAME|$APPLICATION_PATH" >> $PATH_DOTFILE_LOG_TEMP
 }
 
-#############################
-#MUST BE FIXED
-#############################
-
 apply_tmux_tpm(){
 	local APPLICATION_NAME="TmuxPluginManager"
 	local APPLICATION_PATH="$HOME/.tmux/plugins/tpm/"
@@ -201,9 +197,13 @@ apply_tmux_tpm(){
 
 	git clone https://github.com/tmux-plugins/tpm $APPLICATION_PATH
 
+	#############################
+	#MUST BE FIXED
+	#
 	ln -sf $PATH_DOTFILE/tmux_network.sh $HOME/.tmux/plugins/tmux/scripts/network.sh
 	#wait ln -sf $PATH_DOTFILE/tmux_network.sh $HOME/.tmux/plugins/tmux/scripts/network.sh
 	#tmux source $APPLICATION_PATH && run -b $HOME/.tmux/plugins/tpm/tpm
+	#############################
 
 	echo -e "$APPLICATION_NAME|$APPLICATION_PATH" >> $PATH_DOTFILE_LOG_TEMP
 }
