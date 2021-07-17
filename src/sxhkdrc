@@ -1,0 +1,16 @@
+# Display hello world message
+#super + shift + escape
+#super + shift + esc
+super + shift + h
+	notify-send "Hello world!"
+
+# Alacritty
+control + alt + t
+	alacritty
+
+# Browser
+# VirtManager
+# Scrot
+# SimpleScreenRecorder
+# Lf
+# Feh

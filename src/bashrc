@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+PS1='[\u@\h \W]\$ '
+
+export EDITOR=vim
+
+#############################
+#Load aliases and shortcuts if existent.
+#############################
+
+[[ -f /home/joker/.local/aliasrc/aliasrc.sh ]] && source /home/joker/.local/aliasrc/aliasrc.sh
+
+#############################
+#Load brightness and shortcuts if existent.
+#############################
+
+#[[ -f /home/joker/.local/brightness/brightness.sh ]] && source /home/joker/.local/brightness/brightness.sh
+#[[ -f /home/joker/.local/brightness/brightness.sh ]] && alias brightness="/home/joker/.local/brightness/brightness.sh"
+alias brightness="/home/joker/.local/brightness/brightness.sh"
+
+#############################
+#Load ClearCache and shortcuts if existent.
+#############################
+
+[[ -f /home/joker/.local/clear_cache/clear_cache.sh ]] && alias clear_cache="/home/joker/.local/clear_cache/clear_cache.sh"

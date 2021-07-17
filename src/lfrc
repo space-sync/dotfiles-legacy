@@ -1,0 +1,104 @@
+#############################
+#Instructions
+#############################
+
+#Save this file must be at $HOME/.config/lf/lfrc
+
+#############################
+#Enable commands on startup
+#############################
+
+set hidden on
+set mouse on
+set icons on
+set number on
+set preview on
+
+${{
+    notify-send "Welcome to the hacker file manager mode"
+}}
+
+#############################
+#Shortcut keybinds
+#############################
+
+map gr cd /
+map D trash
+
+#Change the owner of the files and go to my custom virtual machine shared folder directory
+map xx ${{
+    sudo chown -R joker:joker /home/joker/sharing/
+    lf /home/joker/sharing/
+}}
+
+#############################
+#Commands reads
+#############################
+
+#LF config file
+cmd config ${{
+    mkdir -p /home/joker/.config/lf/
+    vim /home/joker/.config/lf/lfrc
+}}
+
+#Open another LF instance over LF
+cmd lf ${{
+    lf
+}}
+
+#Open HTop over LF
+cmd htop ${{
+    htop
+}}
+
+#############################
+#Colors (still testings)
+#############################
+
+export LF_COLORS="\
+    ~/Documents=01;31:\
+    ~/Downloads=01;31:\
+    ~/.local/share=01;31:\
+    ~/.config/lf/lfrc=31:\
+    .git/=01;32:\
+    .git=32:\
+    .gitignore=32:\
+    Makefile=32:\
+    README.*=33:\
+    *.txt=34:\
+    *.md=34:\
+    ln=01;36:\
+    di=01;34:\
+    ex=01;32:\
+    "
+
+#Having such a long variable definition in a shell configuration file might be undesirable. You may instead put this definition in a separate file and source it in your shell configuration file as follows:
+# [ -f "/path/to/colors" ] && source "/path/to/colors"
+#See the wiki page for ansi escape codes https://en.wikipedia.org/wiki/ANSI_escape_code.
+
+
+#############################
+#Preview script with LF and Fzf - Testing
+#############################
+
+handle(){
+	if [ -f "$1" ]; then
+		highlight "$1" -O ansi --force
+	elif [ -d "$1" ]; then
+		tree "$1" -La 1
+	fi
+}
+
+case "$1" in
+	*.png | *.jpg | *.jpeg | *.mkv | *.m4v) mediainfo "$1" ;;
+	*.md) glow -s dark "$1" ;;
+	*.pdf) pdftotext "$1" ;;
+	*.zip) zipinfo "$1" ;;
+	*.tar.gz) tar -ztvf "$1" ;;
+	*.tar.bz2) tar -jtvf "$1" ;;
+	*.tar) tar -tvf "$1" ;;
+	*.rar) unrar "$1" ;;
+	*.7z) 7z l "$1" ;;
+	*.zsh* | *.bash* | *.git*) pistol "$1" ;;
+	*) handle "$1" ;;
+esac
