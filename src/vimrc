@@ -441,6 +441,11 @@ nnoremap <Leader>w :w<CR>
 "Common text editor shortcuts
 "##############
 
+:command Q q
+:command W w
+:command Wq wq
+:command WQ wq
+
 map <C-a> :ggVG
 map <C-s> :w<CR>                "echo 'stty -ixon' >> ~/.bashrc
 map <C-S> :wq<CR>               "echo 'stty -ixon' >> ~/.bashrc
