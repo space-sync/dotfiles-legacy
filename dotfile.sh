@@ -7,26 +7,25 @@
 AUX1=$1
 
 LINK_REPOSITORY="https://github.com/henrikbeck95/dotfiles.git"
-PATH_REPOSITORY=$HOME/.dotfile
+PATH_REPOSITORY=$HOME/.dotfiles
 PATH_DOTFILE=$PATH_REPOSITORY/src
-PATH_DOTFILE_LOG=/var/log/dotfile
-PATH_DOTFILE_LOG_TEMP=/tmp/dotfile_log_temp
-PATH_DOTFILE_REMOVE=/tmp/dotfile_log_remove
+PATH_DOTFILE_LOG=/var/log/dotfiles
+PATH_DOTFILE_LOG_TEMP=/tmp/dotfiles_log_temp
+PATH_DOTFILE_REMOVE=/tmp/dotfiles_log_remove
 PATH_SCRIPT=${BASH_SOURCE%}
 
 MESSAGE_HELP="
-\t-------------------------------------
-\t\t***DOTFILES MANAGER***
-\t-------------------------------------
+\t\t\tDOTFILES MANAGER
+\t\t\t----------------\n
+[Description]
+This is a plain text configuration files manager used by the softwares for loading their settings.
 
+[Warnings]
 Be sure you really want to do this procedure.
 This software is going to replace your dotfiles.
 So, consider to backup your dotfiles before moving forward.
 
-\t-------------------------------------
-\tCommand line interface commands list
-\t-------------------------------------
-
+[Parameters]
 -h,\t--help, -?\t\tDisplay this help message
 -c,\t--commit\t\tCommit the dotfiles stage (NOT IMPLEMENTED YET)
 -b,\t--backup\t\tBackup the files (NOT IMPLEMENTED YET)
@@ -35,7 +34,8 @@ So, consider to backup your dotfiles before moving forward.
 -l,\t--list\t\t\tList all linked dotfiles
 -r,\t--remove\t\tRemove dotfiles
 -rr,\t--remove-all\t\tRemove all dotfiles
--u,\t--update\t\tUpdate dotfiles"
+-u,\t--update\t\tUpdate dotfiles
+"
 
 MESSAGE_ERROR="This is an invalid argument for $0!\n\n$MESSAGE_HELP"
 
