@@ -1,0 +1,6 @@
+pinch:
+    in:
+      command: 'xdotool key ctrl+plus'
+    out:
+       command: 'xdotool key ctrl+minus'
+

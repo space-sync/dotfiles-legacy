@@ -1,0 +1,70 @@
+	//Aplica um sinal visual na esquerda da linha selecionada:
+	"editor.renderLineHighlight": "gutter",
+	
+	//Define o tema dos icones na sidebar:
+	"workbench.iconTheme": "material-icon-theme",
+	
+	//Configura tamanho e familia da fonte:
+	"editor.fontSize": 14,
+	"editor.lineHeight": 20,
+	//"editor.fontFamily": "",
+	//"editor.fontFamily": "Source Code Pro Medium",
+	//"editor.fontFamily": "MesloLGS NF",
+	//"editor.fontFamily": "MesloLGM Nerd Font",
+	//"editor.fontFamily": "Fira Code",
+	//"editor.fontFamily": "Fira Code Regular",
+	"editor.fontFamily": "FiraCode Nerd Font",
+	//"editor.fontFamily": "FiraCode Nerd Font Mono",
+	"editor.fontLigatures": true,
+	"explorer.compactFolders": false,
+	
+	//Configuracao de inicializacao e armazenamento local:
+	//"files.defaultLanguage": "plaintext",
+	"files.defaultLanguage": "markdown",
+	"workbench.startupEditor": "none",
+	"editor.tabSize": 4,
+	"window.zoomLevel": 0,
+	"workbench.commandPalette.history": 10, //Capacidade de armazenamento do ctrl + shift + P (default = 50):
+	"files.autoSave": "off",
+	"explorer.confirmDragAndDrop": false, //Pergunta para abrir um arquivo que foi arrastado ate a tela.
+	"explorer.confirmDelete": false, //Pargunta para confirmar a exclusao de um arquivo.
+	"javascript.updateImportsOnFileMove.enabled": "always", //Atualiza a referencia do diretorio do arquivo automaticamente.
+	"typescript.updateImportsOnFileMove.enabled": "always", //Atualiza a referencia do diretorio do arquivo automaticamente.
+
+	//Formatacao do estilo de codigo do arquivo:
+	"editor.comments.insertSpace": false,
+	"files.insertFinalNewline": false, //Espacos em brancos no final da linha
+	"files.trimFinalNewlines": false, //Ultima linha do arquivo deve ser branca
+	
+	//Quebra a linha quando chega no final da tela:
+	"editor.wordWrap": "bounded", //Muda uma linha muito grande para a linha de baixo.
+	"editor.wordWrapColumn": 140, //Controls the wrapping column of the editor when `editor.wordWrap` is 'wordWrapColumn' or 'bounded'.
+	"editor.wrappingIndent": "indent", //Identacao automatica.
+
+	//Aplica linhas verticais para lembrar de quebrar linha em oódigos muito grandes:
+	"editor.formatOnSave": false,
+	"editor.rulers": [
+		100,
+		130,
+		140
+	],
+
+	// Controls the wrapping column of the editor when `editor.wordWrap` is 'wordWrapColumn' or 'bounded'.
+	//"editor.autoIndent": ,
+	//"editor.detectIndentation": true,
+	//"editor.defaultFormatter": ,
+	//"editor.maxTokenizationLineLength": 20000,
+	//"editor.lineNumbers": "off",
+	"editor.lineNumbers": "on",
+	//"editor.lineNumbers": "relative",
+	//"editor.letterSpacing": 0,
+	//"editor.": null,
+
+	// Maximum amount of characters per line (0 = disable).
+	"html.format.wrapLineLength": 0,
+	"liveServer.settings.donotShowInfoMsg": true,
+
+	//Source code side cverview
+    //"editor.minimap": "false",
+    "editor.minimap": "true",
+

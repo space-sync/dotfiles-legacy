@@ -1,0 +1,51 @@
+#=====================================================================================
+#                                         LORD 
+# Date    : 14/10/2020
+# Version : v0.0.1
+# Author  : Henrik Beck at https://www.github.com/henrikbeck95/
+# Project : https://www.github.com/henrikbeck95/lord/
+#======================================================================================
+
+#############################################################################
+#READ THIS QUICK TUTORIAL FOR NOT BREAKING THE OPERATION SYSTEM DOWN AND CRY
+#############################################################################
+
+# WARNING!
+#DO NOT EDIT THIS CONFIGURATION FILE FROM HERE. THERE IS A SHELL SCRIPT FILE CALLED "config_generator.sh" THAT WAS MADE TO PROVIDE MORE COMFORTABLE AND ORGANIZABLE MANAGEMENT TO THE **Albert, Bash, Cava, Compton, Dunst, Fusuma, i3, _Nautilus_, Neofetch, Picom, Polybar, Ranger, Rofi, URxvt, Systemd, Vim, Visual Studio Code, VLC, XFCE4-Panel, X-Term and ZSH** CONFIG's FILES SPLITING THEM INTO MODULES AND MINIMIZING THE RISK TO BREAK THE OPERATING SYSTEM DOWN. FURTHERMORE IT ALSO PREVENTS THE SAME OLD SYNTAX THAT WE ARE USED TO USE IN ALL THESE CONFIGURATION FILES.
+
+#FOR MORE INFORMATIONS ABOUT HOW IT WORKS TAKE A LOOK AT THE **LORD** OFFICIAL REPOSITORY.
+
+swipe:
+    3:
+      left:
+        command: exec i3 focus right
+      right:
+        command: exec i3 focus left
+      up:
+        command: exec i3 focus down
+      down:
+        command: exec i3 focus up
+    4:
+      left:
+       command: exec i3 workspace next
+      right:
+        command: exec i3 workspace prev
+      up:
+        command: exec i3 fullscreen toggle
+      down:
+        command: exec i3 floating toggle
+
+pinch:
+    in:
+      command: 'xdotool key ctrl+plus'
+    out:
+       command: 'xdotool key ctrl+minus'
+
+threshold:
+    swipe: 0.4
+    pinch: 0.4
+
+interval:
+    swipe: 0.8
+    pinch: 0.1
+

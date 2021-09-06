@@ -1,0 +1,44 @@
+#=====================================================================================
+#                                         LORD 
+# Date    : 14/10/2020
+# Version : v0.0.1
+# Author  : Henrik Beck at https://www.github.com/henrikbeck95/
+# Project : https://www.github.com/henrikbeck95/lord/
+#======================================================================================
+
+#############################################################################
+#READ THIS QUICK TUTORIAL FOR NOT BREAKING THE OPERATION SYSTEM DOWN AND CRY
+#############################################################################
+
+# WARNING!
+#DO NOT EDIT THIS CONFIGURATION FILE FROM HERE. THERE IS A SHELL SCRIPT FILE CALLED "config_generator.sh" THAT WAS MADE TO PROVIDE MORE COMFORTABLE AND ORGANIZABLE MANAGEMENT TO THE **Albert, Bash, Cava, Compton, Dunst, Fusuma, i3, _Nautilus_, Neofetch, Picom, Polybar, Ranger, Rofi, URxvt, Systemd, Vim, Visual Studio Code, VLC, XFCE4-Panel, X-Term and ZSH** CONFIG's FILES SPLITING THEM INTO MODULES AND MINIMIZING THE RISK TO BREAK THE OPERATING SYSTEM DOWN. FURTHERMORE IT ALSO PREVENTS THE SAME OLD SYNTAX THAT WE ARE USED TO USE IN ALL THESE CONFIGURATION FILES.
+
+#FOR MORE INFORMATIONS ABOUT HOW IT WORKS TAKE A LOOK AT THE **LORD** OFFICIAL REPOSITORY.
+
+# Beware! This file is rewritten by htop when settings are changed in the interface.
+# The parser is also very primitive, and not human-friendly.
+fields=0 48 17 18 38 39 40 2 46 47 49 1
+sort_key=46
+sort_direction=1
+hide_threads=0
+hide_kernel_threads=1
+hide_userland_threads=0
+shadow_other_users=0
+show_thread_names=0
+show_program_path=1
+highlight_base_name=0
+highlight_megabytes=1
+highlight_threads=1
+tree_view=0
+header_margin=1
+detailed_cpu_time=0
+cpu_count_from_zero=0
+update_process_names=0
+account_guest_in_cpu_meter=0
+color_scheme=0
+delay=15
+left_meters=AllCPUs Memory Swap
+left_meter_modes=1 1 1
+right_meters=Tasks LoadAverage Uptime
+right_meter_modes=2 2 2
+

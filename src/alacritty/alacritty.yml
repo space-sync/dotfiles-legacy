@@ -1,0 +1,30 @@
+#vim $HOME/.config/alacritty/alacritty.yml
+font:
+  normal:
+    family: "Cascadia Mono"
+    #family: "monospace",
+    #family: "Fantasque Sans Mono",
+    #family": "mononoki",
+    #family: "Cascadia Mono",
+    #family: "Hack",
+
+    #family: "MesloLGS NF"
+    #family: "FiraCode Nerd Font Mono"
+  size: 10
+colors:
+  primary:
+    #background: '#0D011E' #Dark blue
+    #background: '#191919'#Dark grey
+
+    #foreground: '#00cc00' #Green
+    #foreground: '#00ff00' #Green
+    foreground: '#FFFFD8' #Light grey
+    #foreground: '#FD947C' #Orange
+    #foreground: '#00ff00'
+    #foreground: '#BD93F9' #Purple
+    #foreground: '#FF78D1' #Ping
+cursor:
+  text: '#0000ff'
+  cursor: '712c15'
+mouse_bindings:
+  - {mouse: Middle, action: Copy}

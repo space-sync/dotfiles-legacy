@@ -1,0 +1,92 @@
+[$Version]
+update_info=kwin.upd:replace-scalein-with-scale,kwin.upd:port-minimizeanimation-effect-to-js,kwin.upd:port-scale-effect-to-js,kwin.upd:port-dimscreen-effect-to-js,kwin.upd:auto-bordersize,kwin.upd:animation-speed
+
+[Compositing]
+OpenGLIsUnsafe=false
+
+[Desktops]
+Id_1=815875bb-2491-4c30-898e-322463b55bae
+Id_10=316452d1-9d3f-4112-b4a7-c2a595f78019
+Id_2=f99fba85-e925-4f07-a5b9-979989a9f90f
+Id_3=3851e3a2-5995-4cec-b764-1395e0a18550
+Id_4=87325684-4607-40d7-88ea-c49fb37f0d60
+Id_5=4b3bc6d7-c7cd-4d21-bf8b-cf94696dc10b
+Id_6=7469fffa-2296-4265-949b-e8e154da1055
+Id_7=cda2586b-08bd-44d0-b864-bc0f22bfcd2d
+Id_8=43ec9569-b3ca-4fd4-96d4-54ddca7d3425
+Id_9=ddd5418a-7926-4eea-bcbf-9cb966371595
+Number=10
+Rows=1
+
+[Effect-PresentWindows]
+BorderActivate=5
+BorderActivateAll=9
+
+[ElectricBorders]
+TopLeft=None
+
+[MouseBindings]
+CommandActiveTitlebar1=Raise
+CommandActiveTitlebar2=Nothing
+CommandActiveTitlebar3=Operations menu
+CommandAll1=Move
+CommandAll2=Toggle raise and lower
+CommandAll3=Resize
+CommandAllKey=Alt
+CommandAllWheel=Nothing
+CommandInactiveTitlebar1=Activate and raise
+CommandInactiveTitlebar2=Nothing
+CommandInactiveTitlebar3=Operations menu
+CommandTitlebarWheel=Nothing
+CommandWindow1=Activate, raise and pass click
+CommandWindow2=Activate and pass click
+CommandWindow3=Activate and pass click
+CommandWindowWheel=Scroll
+
+[NightColor]
+LatitudeAuto=-23.627
+LongitudeAuto=-46.635
+
+[Plugins]
+blurEnabled[$d]
+contrastEnabled[$d]
+desktopchangeosdEnabled=true
+highlightwindowEnabled=true
+kwin4_effect_squashEnabled=false
+magiclampEnabled=true
+windowgeometryEnabled=false
+
+[SubSession: 3566e4bd-877e-415e-a745-1f3f835340a4]
+active=-1
+count=0
+
+[SubSession: 797b86de-6d12-4b80-bde5-2e3580d0a665]
+active=-1
+count=0
+
+[TabBox]
+BorderActivate=9
+
+[Windows]
+ActiveMouseScreen=true
+AutoRaise=false
+AutoRaiseInterval=750
+BorderSnapZone=10
+CenterSnapZone=0
+ClickRaise=true
+DelayFocusInterval=300
+FocusPolicy=FocusFollowsMouse
+FocusStealingPreventionLevel=1
+GeometryTip=false
+HideUtilityWindowsForInactive=true
+MaximizeButtonLeftClickCommand=Maximize
+MaximizeButtonMiddleClickCommand=Maximize (vertical only)
+MaximizeButtonRightClickCommand=Maximize (horizontal only)
+NextFocusPrefersMouse=false
+Placement=Centered
+SeparateScreenFocus=false
+ShadeHover=false
+ShadeHoverInterval=250
+SnapOnlyWhenOverlapping=false
+TitlebarDoubleClickCommand=Maximize
+WindowSnapZone=10

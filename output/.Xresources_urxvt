@@ -1,0 +1,335 @@
+#=====================================================================================
+#                                         LORD 
+# Date    : 14/10/2020
+# Version : v0.0.1
+# Author  : Henrik Beck at https://www.github.com/henrikbeck95/
+# Project : https://www.github.com/henrikbeck95/lord/
+#======================================================================================
+
+#############################################################################
+#READ THIS QUICK TUTORIAL FOR NOT BREAKING THE OPERATION SYSTEM DOWN AND CRY
+#############################################################################
+
+# WARNING!
+#DO NOT EDIT THIS CONFIGURATION FILE FROM HERE. THERE IS A SHELL SCRIPT FILE CALLED "config_generator.sh" THAT WAS MADE TO PROVIDE MORE COMFORTABLE AND ORGANIZABLE MANAGEMENT TO THE **Albert, Bash, Cava, Compton, Dunst, Fusuma, i3, _Nautilus_, Neofetch, Picom, Polybar, Ranger, Rofi, URxvt, Systemd, Vim, Visual Studio Code, VLC, XFCE4-Panel, X-Term and ZSH** CONFIG's FILES SPLITING THEM INTO MODULES AND MINIMIZING THE RISK TO BREAK THE OPERATING SYSTEM DOWN. FURTHERMORE IT ALSO PREVENTS THE SAME OLD SYNTAX THAT WE ARE USED TO USE IN ALL THESE CONFIGURATION FILES.
+
+#FOR MORE INFORMATIONS ABOUT HOW IT WORKS TAKE A LOOK AT THE **LORD** OFFICIAL REPOSITORY.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!README
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!TERMINAL COMMAND
+!Command to reload the URxvt: $ xrdb ~/.Xresources
+
+!EXTENSION
+!Must install the dependency: sudo apt install wmctrl
+!Must install the extensions manually
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!DEFINITION
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!TERMINAL NAME
+!URxvt*termName: rxvt-256color
+!URxvt*termName: xterm-256color
+!URxvt.termName: xterm-256color
+
+!LOCATION
+!URxvt.imLocale: en_US.UTF-8
+
+!MODIFIER
+URxvt.modifier: mod1
+
+!OTHERS DEFINITIONS
+URxvt*dynamicColors: on
+URxvt*loginShell: true
+URxvt.imLocale: en_US.UTF-8
+URxvt.saveLines: 20000
+URxvt.transparent: false
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!BORDER
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!BORDER
+URxvt.internalBorder:     22
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!CURSOR
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!CURSOR
+URxvt.cursorBlink: true
+URxvt.cursorColor: #00A1BF
+!URxvt.cursorColor: #FD971F
+xcursor.theme: Vanilla-DMZ
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!FONT
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!SPACE
+URxvt.letterSpace: -1
+!URxvt.letterSpace: 0
+
+!Tabs
+!URxvt.tabbed.title-fg:  12
+!URxvt.tabbed.tab-bg:    12
+
+!FONT
+URxvt.font: xft:monospace:size=12
+!URxvt.font: xft:FiraCode-Regular:size=12
+!URxvt.font: xft:FiraMono-Regular:size=12
+!URxvt.font: xft:Fira Code Nerd Font:size=8:minspace=False, xft:Symbola:size=11
+!URxvt*font: xft:Hack Nerd Font:pixelsize=15:style=bold
+!URxvt.font: xft:SFProDisplay-Regular:size=12
+!URxvt.font: xft:SFCompactText-Medium:size=12
+!URxvt.font: xft:SFCompactText-HeavyItalic:size=12
+!URxvt.font: xft:SourceCodePro-Regular:size=9.5:minspace=False
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!KEYBIND MAP
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!ENABLE CLIPBOARD KEYBINDINGS
+URxvt.iso14755: False
+!URxvt.iso14755_52: false
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+
+!DISABLE PREVIOUS CLIPBOARD KEYBINDINGS
+!To disable the previous keybindings:
+URxvt.keysym.Control-Meta-c: builtin-string:
+URxvt.keysym.Control-Meta-v: builtin-string:
+
+!TESTING
+!URxvt.keysym.C-o:resize-font:smaller
+!URxvt.keysym.C-p:resize-font:bigger
+!URxvt.keysym.C-i:resize-font:reset
+
+!ENABLE HOME/END KEYBINDINGS
+URxvt.keysym.Home: beginning-of-line:
+URxvt.keysym.End: end-of-line:
+
+!URxvt.keysym.Home: \033[1~
+!URxvt.keysym.End: \033[4~
+
+!"\e\e[D": backward-word
+!"\eOd": backward-word
+!"\e[1;3D": backward-word
+!"\e[1;5D": backward-word           #<---- this
+!"\e[5D": backward-word
+!"\eb": backward-word
+!"\C-f": forward-char
+!"\eOC": forward-char
+!"\e[C": forward-char
+!"\C-s": forward-search-history
+!"\e\e[C": forward-word
+!"\eOc": forward-word
+!"\e[1;3C": forward-word
+!"\e[1;5C": forward-word            #<----- and here
+!"\e[5C": forward-word
+!"\ef": forward-word
+!"\e[6~": history-search-forward
+
+!"\e[7~":beginning-of-line
+!"\e[8~":end-of-line
+
+!URxvt.keysym.Home:beginning-of-line
+!URxvt.keysym.End:end-of-line
+
+!URxvt.keysym.Home: \033[1~
+!URxvt.keysym.End: \033[4~
+
+!URxvt.keysym.KP_Home: \033[1~
+!URxvt.keysym.KP_End:  \033[4~
+
+! those two are for rxvt
+!"\e[7~":beginning-of-line
+!"\e[8~":end-of-line
+
+!setkey "\033[1~" HOME
+!setkey "\033[4~" END
+
+!"\e[1~": beginning-of-line
+!"\e[4~": end-of-line
+!"\e[7~": beginning-of-line
+!"\e[8~": end-of-line
+!"\eOH": beginning-of-line
+!"\eOF": end-of-line
+!"\e[H": beginning-of-line
+!"\e[F": end-of-line
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!COLOR PALETTE
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!BASIC
+!URxvt.background: #282A36
+URxvt.background: #000000
+URxvt.foreground: [70]#F8F8F2
+
+![Dracula Xresources palette](https://github.com/dracula/xresources)
+!URxvt.color0:     #000000
+!URxvt.color8:     #4D4D4D
+!URxvt.color1:     #FF5555
+!URxvt.color9:     #FF6E67
+!URxvt.color2:     #50FA7B
+!URxvt.color10:    #5AF78E
+!URxvt.color3:     #F1FA8C
+!URxvt.color11:    #F4F99D
+!URxvt.color4:     #BD93F9
+!URxvt.color12:    #CAA9FA
+!URxvt.color5:     #FF79C6
+!URxvt.color13:    #FF92D0
+!URxvt.color6:     #8BE9FD
+!URxvt.color14:    #9AEDFE
+!URxvt.color7:     #BFBFBF
+!URxvt.color15:    #E6E6E6
+
+!URxvt.color6:       #00A1BF
+!URxvt.color14:      #00C9EF
+
+!HENRIK PALETTE
+URxvt.color0:     #000000
+URxvt.color8:     #A9ABB0
+URxvt.color1:     #FF5555
+URxvt.color9:     #FF6E67
+URxvt.color2:     #0b650d
+URxvt.color10:    #0f0
+URxvt.color3:     #FFBD2E
+URxvt.color11:    #FFA
+URxvt.color4:     #6005A0
+URxvt.color12:    #732FAF
+URxvt.color5:     #e60053
+URxvt.color13:    #ff009f
+URxvt.color6:     #0a81f5
+URxvt.color14:    #44b4fb
+URxvt.color7:     #BFBFBF
+URxvt.color15:    #E6E6E6
+
+!HENRIK ALTERNATIVE PALETTE
+!URxvt.color0:     #000000
+!URxvt.color1:     #FF5555
+!URxvt.color2:     #0b650d
+!URxvt.color3:     #FFBD2E
+!URxvt.color4:     #6005A0
+!URxvt.color5:     #e60053
+!URxvt.color6:     #0a81f5
+!URxvt.color7:     #BFBFBF
+!URxvt.color8:     #A9ABB0
+!URxvt.color9:     #FF6E67
+!URxvt.color10:    #0f0
+!URxvt.color11:    #FFA
+!URxvt.color12:    #732FAF
+!URxvt.color13:    #ff009f
+!URxvt.color14:    #44b4fb
+!URxvt.color15:    #E6E6E6
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!SCROLLBAR
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!BASIC
+!URxvt.scrollstyle: plain
+URxvt.scrollstyle: mode
+URxvt.scrollBar: true
+!URxvt.scrollBar: off
+URxvt.scrollBar_right: true
+!URxvt.scrollColor: #00A1BF
+!URxvt.troughColor: #000000
+
+!NEEDED AFTER DISABLE THE FADING
+URxvt.scrollBar_floating: true
+
+!STOP AUTOSCROLL WHEN SCROLLED UP
+!URxvt.scrollTtyOutput: false
+!URxvt.scrollWithBuffer: true
+!URxvt.scrollTtyKeypress: true
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!NAVIGATION
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!NAVIGATION
+!URxvt.keysym.Shift-Up: command\033]720;1\007
+!URxvt.keysym.Shift-Down: command\033]721;1\007
+!URxvt.keysym.Control-Up: command\033[1;5A
+!URxvt.keysym.Control-Down: command\033[1;5B
+!URxvt.keysym.Control-Right: command\033[1;5C
+!URxvt.keysym.Control-Left: command\033[1;5D
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!EXTENSION
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!IMPORTING PERL EXTENSIONS
+!URxvt.perl-ext-common:resize-font
+!URxvt.perl-ext-common: default, matcher, resize-font, fullscreen
+!URxvt.perl-ext-common: default, matcher,tabbedex,vtwheel
+
+!FULLSCREEN
+!URxvt.keysym.F11: perl: fullscreen:switch
+
+!RESIZE FONT
+!URxvt.resize-font.smaller: C-Down
+!URxvt.resize-font.bigger: C-Up
+
+!MATCHER
+!URxvt.matcher.button:   1
+
+URxvt.url-launcher /usr/bin/firefox
+!URxvt.url-launcher: /usr/bin/palemoon
+
+!URxvt.keysym.M-Delete: perl:matcher:list
+!URxvt.colorUL: #7780A1
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!XRESOURCES FILE
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!XRESOURCES FILE
+Xft.antialias: 1
+!Xft.antialias: true
+!Xft.autohint: 0
+!Xft.autohint: false
+
+!Xft.dpi: 96
+!Xft.dpi: 108
+
+!Xft.hinting: true
+!Xft.hintstyle: hintfull
+
+!Xft.lcdfilter: lcddefault
+
+Xft.rgba: rgba
+!Xft.rgba: rgb
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!OTHERS
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!DISABLE FADING TO GET w3mimgdisplay to work...
+!URxvt.fading: 20
+!URxvt.iconFile: /home/prikhi/Media/Pictures/Icons/terminal.png
+
+!FADING
+!xscreensaver.fade:   false
+!xscreensaver.unfade: false
+
+!IBUS IME
+!URxvt.inputMethod: ibus
+!URxvt.preeditType: OverTheSpot
+
+!NO WINDOW FLASHING
+URxvt.visualBell: false
+!URxvt.urgentOnBell: true
+
+URxvt*depth: 32
+!URxvt.depth: 24
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!TESTING
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+

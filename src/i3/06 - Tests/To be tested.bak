@@ -1,0 +1,87 @@
+#############################
+#To be tested
+#############################
+
+# Open Firefox link
+#$ /usr/bin/firefox --new-window http://www.cyberciti.biz/
+#$ /usr/bin/firefox www.cyberciti.biz
+
+# Autorun transparent manager
+#exec --no-startup-id xcompmgr
+
+# Autostart applications
+#exec --no-startup-id nitrogen --restore; sleep 1; picom --config /home/dt/.config/picom/picom.conf
+#exec --no-startup-id xfce4-power-manager
+#exec --no-startup-id xautolock -time 10 -locker blurlock
+#exec --no-startup-id $term -n dropdown -e tmux
+#exec --no-startup-id $term -n math -f mono:pixelsize=24 -e R -q
+#exec --no-startup-id picom --backend glx --experimental-backends -bc
+#exec_always --no-startup-id ff-theme-util
+#exec_always --no-startup-id fix_xcursor
+
+# Discovering the resolution
+#Resolution 15:00
+#sudo apt install xrandr
+
+# Discovering the right terminal command
+#On terminal type: xprop and then click on the software window you want to know. Select the second value from the WM_CLASS(STRING)
+# Launch
+#launch categorized menu
+#bindsym $mod+' exec --no-startup-id morc_menu
+
+# Lock screen
+#bindsym $mod+9 exec --no-startup-id blurlock
+
+# Notification enabled right after running the software - WORKS!!!
+#for_window [class="^.*"] exec --no-startup-id notify-send "Opening the software"
+
+# Start applications
+#bindsym $mod+Ctrl+b exec $myTerm -e 'bmenu'
+#bindsym $mod+F2 exec obs
+#bindsym $mod+F3 exec kdenlive
+#bindsym $mod+F5 exec $myTerm -e 'mocp'
+#bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+#bindsym Print exec --no-startup-id i3-scrot
+#bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
+#bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+#bindsym $mod+Ctrl+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
+#bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
+
+# Start Rofi
+#bindsym $alt+space exec rofi -show drun
+
+## Transparency for compton: make full opaque/100% 
+##bindsym --release $mod+Shift+S	exec --no-startup-id notify-send "Select window to make opaque" && compton-trans -s 100
+
+#############################
+# Organizing
+#############################
+
+#exec_always --no-startup-id autotiling
+#exec --no-startup-id i3-msg 'workspace $ws2; exec firefox'
+#exec --no-startup-id i3-msg 'workspace $ws3; exec kitty -e nvim'
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+#floating_modifier $mod
+
+# Bindings to make the webcam float and stick.
+#for_window [title="mpvfloat"] floating enable
+#for_window [title="mpvfloat"] sticky enable
+#for_window [title="mpvfloat"] border pixel 0
+#no_focus   [title="mpvfloat"]
+
+# General dropdown window traits. The order can matter.
+#for_window [instance="dropdown_*"] floating enable
+#for_window [instance="dropdown_*"] move scratchpad
+#for_window [instance="dropdown_*"] sticky enable
+#for_window [instance="dropdown_*"] scratchpad show
+#for_window [instance="dropdown_tmuxdd"] resize set 625 450
+#for_window [instance="dropdown_*"] move position center
+
+# Personal
+#for_window [instance="dropdown_*"] scratchpad show; [instance="dropdown"] move position center
+#for_window [title="dropdown"] floating enable
+#for_window [title="dropdown"] resise set 625 400
+#for_window [title="dropdown"] move scratchpad
+#for_window [title="dropdown"] border pixel 5
+

@@ -1,0 +1,45 @@
+    //Terminal integrado:
+    "terminal.integrated.fontSize": 14,
+
+    //"terminal.integrated.fontFamily": "",
+    //"terminal.integrated.fontFamily": "monospace",
+
+    //"terminal.integrated.fontFamily": "Fantasque Sans Mono",
+    "terminal.integrated.fontFamily": "mononoki",
+
+    //"terminal.integrated.fontFamily": "Cascadia Mono",
+    //"terminal.integrated.fontFamily": "Hack",
+
+    //"terminal.integrated.fontFamily": "MesloLGS NF",
+    //"terminal.integrated.fontFamily": "MesloLGM Nerd Font",
+    //"terminal.integrated.fontFamily": "Meslo LG M DZ for Powerline",
+    
+    //"terminal.integrated.fontFamily": "Fira Code",
+    //"terminal.integrated.fontFamily": "FiraCode Nerd Font Mono",
+
+    "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.fontWeight": "normal",
+    
+    //Linux
+    //"terminal.integrated.shell.linux": "/bin/bash",
+    //"terminal.integrated.shell.linux": "/bin/zsh",
+    //"terminal.external.linuxExec": "xterm",
+    //"terminal.external.linuxExec": "/usr/bin/alacritty",
+    
+    //Linux (Flatpaks):
+    ///app/share/ide-flatpak-wrapper/README.md
+    "terminal.integrated.shell.linux": "/usr/bin/env",
+    "terminal.integrated.shellArgs.linux": ["--", "flatpak-spawn", "--host", "bash"]
+
+    //MacOS
+    //"terminal.integrated.shell.osx": "/bin/zsh",
+    //"terminal.integrated.shell.osx": "/bin/bash",
+    //"terminal.external.osxExec": "Terminal.app",
+    
+    //Windows
+    "terminal.integrated.shellArgs.windows": ["-1"],
+    //"terminal.integrated.shell.windows": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    //"terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
+    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+    //"terminal.external.windowsExec": "%COMSPEC%",
+    //"terminal.external.windowsExec": "C:\\Program Files\\Git\\bin\\bash.exe",

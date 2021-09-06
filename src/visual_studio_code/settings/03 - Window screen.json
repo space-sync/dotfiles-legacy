@@ -1,0 +1,14 @@
+	//Configura a janela "fisica" do Visual Studio Code:
+	"window.newWindowDimensions": "offset",
+	"window.titleBarStyle": "custom",
+	"window.title": "@henrikbeck95: ${dirty}${activeEditorShort}${separator}${rootName}${separator}${appName}",
+
+	//Organizacao do layout de ferramentas:
+	"workbench.editor.tabSizing": "fit",
+	"window.menuBarVisibility": "visible",
+	"workbench.sideBar.location": "right",
+	"workbench.activityBar.visible": true, //Barra lateral de atividade
+	"workbench.statusBar.visible": true, //Barrinha azul no canto inferior da tela.
+	"workspaceExplorer.workspaceStorageDirectory": "C:\\Users\\henrikbeck95\\Documents\\.vscode", //Extensao Workspace Explore:
+
+ 

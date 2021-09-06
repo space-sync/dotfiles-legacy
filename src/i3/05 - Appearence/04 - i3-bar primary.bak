@@ -1,0 +1,73 @@
+#############################
+#i3-bar primary
+#############################
+
+# Start i3-bar to display a workspace bar
+
+bar {
+	#id bar-0
+	id center-bar
+
+	# Strip workspace
+	#strip_workspace_numbers yes|no
+	strip_workspace_numbers yes
+
+	# Hide/kill Polybar
+    bindsym $_MOUSE_CLICK_RIGHT exec $_i3bar_hide_polybar
+
+	# Show/exec Polybar
+    bindsym $_MOUSE_CLICK_MIDDLE exec $_i3bar_show_polybar
+
+	status_command $_i3bar
+
+	# Something
+	#status_command i3blocks
+
+	# Binding mode indicator
+	binding_mode_indicator yes
+
+	# Disable clicking on workspace buttons
+    bindsym button4 nop
+    bindsym button5 nop
+
+	# Font
+	#font pango:DejaVu Sans Mono 10
+
+	# Separator
+	separator_symbol ":|:"
+
+	# Transparence
+	i3bar_command i3bar --transparency
+
+	# Workspace buttons
+	#workspace_buttons no
+	workspace_buttons yes
+
+	# The display is connected either via HDMI or via DisplayPort
+    output $PRIMARY
+    #output eDP-1
+
+	# Show tray icons on the primary monitor none|primary|HDMI-2
+    #tray_output None
+    #tray_output primary
+    tray_output $PRIMARY
+
+	# i3 info bar position
+	#position top
+	position bottom
+
+	# i3 info bar colors
+	colors {
+		background			$grey-dark
+		separator   		$blue-light
+		statusline  		$grey-light
+
+		#                   border          background      text
+		focused_workspace   $blue           $blue           $text-color
+		active_workspace	$purple			$purple			$text-color
+		inactive_workspace	$blue-light     $blue-light     $grey-dark
+		urgent_workspace	$orange         $orange         $text-color
+		binding_mode    	$orange         $orange         $text-color
+	}
+}
+

@@ -1,0 +1,27 @@
+#############################
+#i3-bar
+#############################
+
+# Testing
+exec_always --no-startup-id xrandr --output primary --auto --left-of HDMI-2
+xrandr --output <output> --primary
+exec_always --no-startup-id --output bar-0 --primary
+exec_always --no-startup-id --output bar-1 --HDMI-2
+
+# i3-bar control
+mode dock|hide|invisible
+hidden_state hide|show
+modifier <Modifier>|none
+
+bindsym --release $mod exec i3-msg bar mode dock
+bindsym $mod exec i3-msg bar mode hide
+
+## Toggle between hide state and show state
+bindsym $COMMAND + Z bar hidden_state toggle
+
+## Set the bar instance with id 'bar-1' to switch to hide mode
+bindsym $COMMAND + Z bar mode hide bar-1
+
+## Set the bar instance with id 'bar-1' to always stay hidden
+bindsym $COMMAND + $SHIFT + Z bar mode invisible bar-1
+
