@@ -1,0 +1,224 @@
+#############################
+#Instructions
+#Save this file must be at $HOME/.config/lf/lfrc
+#
+#Meanings
+#Variable $fx means selected file(s) from LF
+#
+#Recommended softwares (for improving the experience)
+#Trash-cli
+#############################
+
+#############################
+#Enable commands on startup
+#############################
+
+set shell sh
+set hidden on
+set mouse on
+set icons on
+set number on
+set preview on
+set scrolloff 10 #Screen margin vertical
+
+#${{
+#    notify-send "Welcome to the hacker file manager mode"
+#}}
+
+#############################
+#Shortcut keybinds
+#############################
+
+#LF configuration
+map gc cd ~/.config/lf/
+
+#Home
+map gh cd ~/
+
+#Logs
+map gl cd /var/log/
+
+#Trash
+map gt cd ~/.local/share/Trash/files/
+
+#Binary directory
+map gbu cd ~/.local/bin/
+map gbr cd /usr/local/bin/
+
+#Fonts directory
+map gfu cd ~/.fonts/
+map gfr cd /usr/local/share/fonts/
+map gfs cd /usr/share/fonts/
+
+#Softwares
+map <delete> delete
+#map <enter> shell
+
+#Execute current file (must be executable)
+map x $$f
+map X !$f
+
+#############################
+#Commands reads
+#############################
+
+#LF config file
+cmd config ${{
+    mkdir -p /home/joker/.config/lf/
+    vim /home/joker/.config/lf/lfrc
+}}
+
+#Make directory
+cmd mkdir ${{
+	mkdir -p $1
+	#mkdir -p
+}}
+
+#Open another LF instance over LF
+cmd lf ${{
+    lf
+}}
+
+#############################
+#Trash management
+#############################
+
+cmd delete ${{
+	set -f
+	printf "Listing files...\n"
+	printf "$fx\n"
+	printf "Are you sure to remove selected item(s)? [Y/n] "
+	read yn
+
+	#[ $yn = "y" ] && rm -rf $fx
+	#[ $yn = "y" ] && mv $fx ~/.local/share/Trash/files/
+	[ $yn = "y" ] && trash-put $fx
+}}
+
+cmd trash-list ${{
+	set -f
+	printf "Listing files inside trash...\n"
+	printf "$fx\n"
+
+	trash-list
+}}
+
+cmd trash-restore ${{
+	set -f
+	printf "Listing files...\n"
+	printf "$fx\n"
+	printf "Are you sure to restore selected item(s)? [Y/n] "
+	read yn
+
+	[ $yn = "y" ] && trash-restore
+}}
+
+cmd trash-empty ${{
+	set -f
+	printf "Listing files...\n"
+	printf "$fx\n"
+	printf "Are you sure to clear trash item(s)? [Y/n] "
+	read yn
+
+	[ $yn = "y" ] && trash-empty
+}}
+
+#############################
+#Colors (still testings)
+#############################
+
+#export LF_COLORS="\
+    #~/Documents=01;31:\
+    #~/Downloads=01;31:\
+    #~/.local/share=01;31:\
+    #~/.config/lf/lfrc=31:\
+    #.git/=01;32:\
+    #.git=32:\
+    #.gitignore=32:\
+    #Makefile=32:\
+    #README.*=33:\
+    #*.txt=34:\
+    #*.md=34:\
+    #ln=01;36:\
+    #di=01;34:\
+    #ex=01;32:\
+    #"
+
+#Having such a long variable definition in a shell configuration file might be undesirable. You may instead put this definition in a separate file and source it in your shell configuration file as follows:
+# [ -f "/path/to/colors" ] && source "/path/to/colors"
+#See the wiki page for ansi escape codes https://en.wikipedia.org/wiki/ANSI_escape_code.
+
+#############################
+#Preview script with LF and Fzf - Testing
+#############################
+
+handle(){
+	if [ -f "$1" ]; then
+		highlight "$1" -O ansi --force
+	elif [ -d "$1" ]; then
+		tree "$1" -La 1
+	fi
+}
+
+case "$1" in
+	*.png | *.jpg | *.jpeg | *.mkv | *.m4v) mediainfo "$1" ;;
+	*.md) glow -s dark "$1" ;;
+	*.pdf) pdftotext "$1" ;;
+	*.zip) zipinfo "$1" ;;
+	*.tar.gz) tar -ztvf "$1" ;;
+	*.tar.bz2) tar -jtvf "$1" ;;
+	*.tar) tar -tvf "$1" ;;
+	*.rar) unrar "$1" ;;
+	*.7z) 7z l "$1" ;;
+	*.zsh* | *.bash* | *.git*) pistol "$1" ;;
+	*) handle "$1" ;;
+esac
+
+#############################
+#Testing
+#############################
+
+#Check if file already exists before renaming it
+#cmd rename %[ -e $1 ] && printf "File already exists" || mv $f $1
+
+#
+#cmd open ${{
+	#test -L $f && f=$(readlink -f $f)
+
+	#case $(file --mime-type $f -b) in
+		#text/*) $EDITOR $fx ;;
+		#*) for f in $fx; do setsid $OPENER $f > /dev/null 2> /dev/null & done ;;
+	#esac
+#}}
+
+#Compact current file
+#cmd compress${{
+	#set -f
+	#mkdir $1
+	#cp -r $fx $1
+
+	#printf "$fx\n"
+	#printf "Which format do you want to compress? [tar/zip]"
+	#read FORMAT
+
+	#case $FORMAT in
+		#*.tar) tar czf $1.tar.gz $1
+		#*.zip) zip -r $1.zip $1 ;;
+		#*) printf "Invalid option for $FORMAT" ;;
+	#esac
+
+	#rm -fr $1
+#}}
+
+#Extract current file
+cmd extract ${{
+	set -f
+	case $f in
+		*.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f ;;
+		*.tar.gz|*.tgz) tar xzvf $f ;;
+		*.tar.xz|*.txz) tar xJvf $f ;;
+		*.zip) unzip $f ;;
+		*.rar) unrar $f ;;
+		*.7z) 7z x $f ;;
+	esac
+}}

@@ -9,7 +9,7 @@ AUX2=$2
 
 #Absolute path where this file script is storaged
 PATH_SCRIPT="$(dirname "$(readlink -f "$0")")"
-PATH_SCRIPT_OUTPUT="$PATH_SCRIPT/output"
+PATH_SCRIPT_OUTPUT="$PATH_SCRIPT/compiled"
 
 #Absolute path where the fonts are storaged
 #PATH_FONTS_ROOT="/usr/local/share/fonts"

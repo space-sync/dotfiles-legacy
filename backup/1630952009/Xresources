@@ -1,0 +1,110 @@
+!################################################
+! Welcome to Himalaya theme - Xterm version
+!
+! Author: Henrik Beck
+! Version 0.0.1
+! Project: https:github.com/henrikbeck95/himalaya
+!################################################
+!################################################
+!################################################
+! Instructions
+!
+! Link this file path using:
+! $ ln -s ~/himalaya/Xresources ~/.Xresources
+!
+! Apply the customizations using:
+! $ xrdb -merges ~/.Xresources
+!################################################
+!################################################
+!################################################
+! XTerm color
+xterm*termName: xterm-256color
+
+! Ensure locale is set up for UTF-8 or force it
+xterm.vt100.locale: true
+
+! Use a nice truetype font and size by default...
+xterm*faceName: Monospace
+xterm*faceSize: 11
+!xterm*faceSize: 14
+
+! Alternative face size
+xterm*faceSize1: 8
+xterm*faceSize2: 10
+xterm*faceSize3: 12
+xterm*faceSize4: 16
+xterm*faceSize5: 22
+!################################################
+!################################################
+!################################################
+! Dracula Xresources palette
+*.foreground: #F8F8F2
+*.background: #282A36
+*.color0:     #000000
+*.color8:     #4D4D4D
+*.color1:     #FF5555
+*.color9:     #FF6E67
+*.color2:     #50FA7B
+*.color10:    #5AF78E
+*.color3:     #F1FA8C
+*.color11:    #F4F99D
+*.color4:     #BD93F9
+*.color12:    #CAA9FA
+*.color5:     #FF79C6
+*.color13:    #FF92D0
+*.color6:     #8BE9FD
+*.color14:    #9AEDFE
+*.color7:     #BFBFBF
+*.color15:    #E6E6E6
+!################################################
+!################################################
+!################################################
+! Only select text
+xterm*highlightSelection: ture
+
+! Remove trailing spaces
+xterm*trimSelection: true
+
+! Every shell is a login shell by default
+xterm*loginshell: true
+
+! Enable scrollback with SHIFT+PageUp or SHIFT+PageDown or mousewhell
+xterm*savelines: 16384
+
+! Double click to select URLs
+xterm*charClass: 33:48.36-47:48.58-59:48.61:48.63-64:48.95:48.126:48
+
+! Fullscreen
+xterm*fullscreen: never
+!################################################
+!################################################
+!################################################
+! Keybinds
+xterm*vt100.translations: override \n\
+	Ctrl <key> minus: smaller-vt-font() \n\
+	Ctrl <key> plus: larger-vt-font() \n\
+	Ctrl <key> 0: set-vt-fond(d) \n\
+	Ctrl Shift <key>C: copy-selection(CLIPBOARD) \n\
+	Ctrl Shift <key>V: insert-selection(CLIPBOARD) \n\
+	<Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0) \n\
+	<Btn2Up>: insert-selection(PRIMARY) \n\
+
+! Clipboard
+xterm*selectToClipboard: true
+
+! Enable ALT key to work
+xterm*metaSendsEscape: true
+!################################################
+!################################################
+!################################################
+! Scrollbar
+xterm*scrollBar: true
+xterm*scrollBar.width: 8
+xterm*rightScrollBar: true
+
+! Customize colors
+xterm*pointerColor: white
+xterm*pointerColorBackground: grey
+xterm*cursorColor: white
+xterm*cursorBlink: true
+!################################################
