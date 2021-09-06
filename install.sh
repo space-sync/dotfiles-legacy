@@ -44,7 +44,7 @@ tools_move_file(){
 }
 
 tools_give_executable_permission(){
-	chmod 755 $1
+	chmod 777 $1
 }
 
 tools_clear_temporary_file(){
