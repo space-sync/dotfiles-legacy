@@ -31,16 +31,21 @@ This software is going to replace your dotfiles.
 So, consider to backup your dotfiles before moving forward.
 
 [Parameters]
--h,\t--help, -?\t\tDisplay this help message
--c,\t--commit\t\tCommit the dotfiles stage (NOT IMPLEMENTED YET)
--b,\t--backup\t\tBackup the files (NOT IMPLEMENTED YET)
--e,\t--edit\t\t\tEdit this file
--i,\t--install\t\tApply dotfiles
--l,\t--list\t\t\tList all linked dotfiles
--r,\t--remove\t\tRemove dotfiles
--rr,\t--remove-all\t\tRemove all dotfiles
--u,\t--update\t\tUpdate dotfiles
+-h,\t--help, -?\t\t\tDisplay this help message
+-e\t--edit\t\t\t\tEdit this script file
+-bc\t--backup-create\t\t\tCreate a Dotfiles backup
+-bl\t--backup-list\t\t\tList the Dotfiles backups
+-br\t--backup-restore\t\tRestore a Dotfile backup
+#-cd\t--compile-dotfile\t\tCompile dotfiles (NOT IMPLEMENTED YET)
+-cr\t--compile-replace\t\tReplace the current dotfiles by the compiled ones
+-di,\t--dotfile-install\t\tApply dotfiles
+-dl,\t--dotfile-list\t\t\tList all linked dotfiles
+-dr,\t--dotfile-remove\t\tRemove dotfiles
+-dra,\t--dotfile-remove-all\t\tRemove all dotfiles
+-du,\t--dotfile-update\t\tUpdate dotfiles
 "
+
+MESSAGE_BACKUP_NOT_AVAILABLE="No backup availables!"
 
 MESSAGE_ERROR="This is an invalid argument for $0!\n\n$MESSAGE_HELP"
 
@@ -63,6 +68,42 @@ tools_check_if_software_is_installed(){
 		#echo "Error: $SOFTWARE_NAME is not installed." >&2
 		return 1
 	fi
+}
+
+dotfiles_backup_create(){
+	local DATE_TIMESTAMP=$(date +%s)
+	mkdir -p $PATH_DOTFILE_BACKUP/$DATE_TIMESTAMP/
+	cp $PATH_DOTFILE/* $PATH_DOTFILE_BACKUP/$DATE_TIMESTAMP/
+}
+
+dotfiles_backup_list(){
+	#Check if there is/are backup(s) available
+	if [[ ! -d $PATH_DOTFILE_BACKUP/ ]];then
+		echo -e "$MESSAGE_BACKUP_NOT_AVAILABLE\nDirectory does not exists."
+	elif [[ -z "$(ls -A $PATH_DOTFILE_BACKUP/)" ]];then
+		echo -e "$MESSAGE_BACKUP_NOT_AVAILABLE\nThere is/are no backup(s) file(s) in directory."
+	else
+		for BACKUP_VERSION in $(ls $PATH_DOTFILE_BACKUP/); do
+			local DATE_TIMESTAMP_VERSION="$BACKUP_VERSION"
+			local DATE_TIMESTAMP_REVERSE=$(date -d "@$DATE_TIMESTAMP_VERSION")
+			echo -e "$DATE_TIMESTAMP_VERSION:\t$DATE_TIMESTAMP_REVERSE"
+		done;
+	fi
+}
+
+#MUST BE TESTED
+dotfiles_backup_restore(){
+	#Get last backup version
+	local BACKUP_VERSION_LATEST=$(ls $PATH_DOTFILE_BACKUP/ | tail -1)
+
+	#Replace the current version by the backup version
+	cp $PATH_DOTFILE_BACKUP/$BACKUP_VERSION_LATEST/* $PATH_DOTFILE/
+}
+
+#MUST BE TESTED
+dotfiles_replace_current(){
+	tools_backup_create
+	cp $PATH_DOTFILE_COMPILED/* $PATH_DOTFILE/
 }
 
 dotfiles_install(){
@@ -307,13 +348,20 @@ display_message_applying(){
 #Calling the functions
 #############################
 
+clear
+
 case $AUX1 in
 	"" | "-h" | "--help" | "-?") echo -e "$MESSAGE_HELP" ;;
 	"-e" | "--edit") $EDITOR $0 ;;
-	"-i" | "--install") dotfiles_install ;;
-	"-l" | "--list") dotfiles_list ;;
-	"-r" | "--remove") dotfiles_remove ;;
-	"-rr" | "--remove-all") dotfiles_remove_all ;;
-	"-u" | "--update") dotfiles_update ;;
+	"-bc" | "--backup-create") dotfiles_backup_create ;;
+	"-bl" | "--backup-list") dotfiles_backup_list ;;
+	"-br" | "--backup-restore") dotfiles_backup_restore ;;
+	#"-cd" | "--compile-dotfile" ??? ;;
+	"-cr" | "--compile-replace") dotfiles_replace_current ;;
+	"-di" | "--dotfile-install") dotfiles_install ;;
+	"-dl" | "--dotfile-list") dotfiles_list ;;
+	"-dr" | "--dotfile-remove") dotfiles_remove ;;
+	"-dra" | "--dotfile-remove-all") dotfiles_remove_all ;;
+	"-du" | "--dotfile-update") dotfiles_update ;;
 	*) echo -e "$MESSAGE_ERROR" ;;
 esac
