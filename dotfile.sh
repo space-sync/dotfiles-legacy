@@ -13,8 +13,6 @@ PATH_DOTFILE=$PATH_REPOSITORY/current
 PATH_DOTFILE_LOG=/var/log/dotfiles
 PATH_DOTFILE_LOG_TEMP=/tmp/dotfiles_log_temp
 PATH_DOTFILE_REMOVE=/tmp/dotfiles_log_remove
-
-#Testing
 PATH_DOTFILE_BACKUP=$PATH_REPOSITORY/backup
 PATH_DOTFILE_COMPILED="$PATH_REPOSITORY/compiled"
 PATH_DOTFILE_CURRENT=""
@@ -36,7 +34,7 @@ So, consider to backup your dotfiles before moving forward.
 -bc\t--backup-create\t\t\tCreate a Dotfiles backup
 -bl\t--backup-list\t\t\tList the Dotfiles backups
 -br\t--backup-restore\t\tRestore a Dotfile backup
-#-cd\t--compile-dotfile\t\tCompile dotfiles (NOT IMPLEMENTED YET)
+-cd\t--compile-dotfile\t\tCompile dotfiles (NOT IMPLEMENTED YET)
 -cr\t--compile-replace\t\tReplace the current dotfiles by the compiled ones
 -di,\t--dotfile-install\t\tApply dotfiles
 -dl,\t--dotfile-list\t\t\tList all linked dotfiles
@@ -78,7 +76,7 @@ dotfiles_backup_create(){
 
 dotfiles_backup_list(){
 	#Check if there is/are backup(s) available
-	if [[ ! -d $PATH_DOTFILE_BACKUP/ ]];then
+	if [[ ! -d $PATH_DOTFILE_BACKUP/ ]]; then
 		echo -e "$MESSAGE_BACKUP_NOT_AVAILABLE\nDirectory does not exists."
 	elif [[ -z "$(ls -A $PATH_DOTFILE_BACKUP/)" ]];then
 		echo -e "$MESSAGE_BACKUP_NOT_AVAILABLE\nThere is/are no backup(s) file(s) in directory."
@@ -104,6 +102,10 @@ dotfiles_backup_restore(){
 dotfiles_replace_current(){
 	tools_backup_create
 	cp $PATH_DOTFILE_COMPILED/* $PATH_DOTFILE/
+}
+
+dotfiles_compilate(){
+	$PATH_REPOSITORY/compilation.sh --compile-all
 }
 
 dotfiles_install(){
@@ -356,7 +358,7 @@ case $AUX1 in
 	"-bc" | "--backup-create") dotfiles_backup_create ;;
 	"-bl" | "--backup-list") dotfiles_backup_list ;;
 	"-br" | "--backup-restore") dotfiles_backup_restore ;;
-	#"-cd" | "--compile-dotfile" ??? ;;
+	"-cd" | "--compile-dotfile") dotfiles_compilate ;;
 	"-cr" | "--compile-replace") dotfiles_replace_current ;;
 	"-di" | "--dotfile-install") dotfiles_install ;;
 	"-dl" | "--dotfile-list") dotfiles_list ;;
