@@ -8,14 +8,15 @@ AUX1=$1
 
 LINK_REPOSITORY="https://github.com/henrikbeck95/dotfiles.git"
 PATH_REPOSITORY=$HOME/.dotfiles
-PATH_DOTFILE=$PATH_REPOSITORY/src
+#PATH_DOTFILE=$PATH_REPOSITORY/src
+PATH_DOTFILE=$PATH_REPOSITORY/current
 PATH_DOTFILE_LOG=/var/log/dotfiles
 PATH_DOTFILE_LOG_TEMP=/tmp/dotfiles_log_temp
 PATH_DOTFILE_REMOVE=/tmp/dotfiles_log_remove
 PATH_SCRIPT=${BASH_SOURCE%}
 
 MESSAGE_HELP="
-\t\t\tDOTFILES MANAGER
+\t\t\tDotfiles manager
 \t\t\t----------------\n
 [Description]
 This is a plain text configuration files manager used by the softwares for loading their settings.
@@ -43,6 +44,23 @@ MESSAGE_ERROR="This is an invalid argument for $0!\n\n$MESSAGE_HELP"
 #Functions
 #############################
 
+tools_convert_string_to_lowercase(){
+	echo "$1" | tr '[:upper:]' '[:lower:]'
+}
+
+tools_check_if_software_is_installed(){
+	local SOFTWARE_NAME=$(tools_convert_string_to_lowercase "$1")
+	echo "$SOFTWARE_NAME"
+
+	if [ -x "$(command -v $SOFTWARE_NAME)" ]; then
+		#echo "$SOFTWARE_NAME is installed." >&2
+		return 0
+	else
+		#echo "Error: $SOFTWARE_NAME is not installed." >&2
+		return 1
+	fi
+}
+
 dotfiles_install(){
 	dotfiles_remove
 
@@ -64,18 +82,37 @@ dotfiles_update(){
 	echo -e "Application|Dotfile path" >> $PATH_DOTFILE_LOG_TEMP
 	echo -e "---|---" >> $PATH_DOTFILE_LOG_TEMP
 
-	apply_alacritty
-	apply_bash
-	apply_feh
-	apply_htop
-	apply_lf
-	apply_sxhkd
-	apply_tmux
-	apply_tmux_tpm
-	apply_tty
-	apply_vim
-	apply_vim_vundle
-	apply_xresources
+	tools_check_if_software_is_installed "Alacritty"
+	[ $? == 0 ] && apply_alacritty
+
+	tools_check_if_software_is_installed "Bash"
+	[ $? == 0 ] && apply_bash
+
+	tools_check_if_software_is_installed "Feh"
+	[ $? == 0 ] && apply_feh
+
+	tools_check_if_software_is_installed "HTop"
+	[ $? == 0 ] && apply_htop
+
+	tools_check_if_software_is_installed "LF"
+	[ $? == 0 ] && apply_lf
+
+	tools_check_if_software_is_installed "SXHKD"
+	[ $? == 0 ] && apply_sxhkd
+
+	tools_check_if_software_is_installed "Tmux"
+	[ $? == 0 ] && apply_tmux
+	[ $? == 0 ] && apply_tmux_tpm
+
+	tools_check_if_software_is_installed "TTY"
+	[ $? == 0 ] && apply_tty
+
+	tools_check_if_software_is_installed "Vim"
+	[ $? == 0 ] && apply_vim
+	[ $? == 0 ] && apply_vim_vundle
+
+	tools_check_if_software_is_installed "xrdb"
+	[ $? == 0 ] && apply_xresources
 
 	column -t -s '|' $PATH_DOTFILE_LOG_TEMP > $PATH_DOTFILE_LOG
 	rm $PATH_DOTFILE_LOG_TEMP
