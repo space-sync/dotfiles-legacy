@@ -2,9 +2,18 @@
 
 AUX1=$1
 
-PATH_SCRIPT=$(pwd)
-DOTFILES_COMPILED="$PATH_SCRIPT/compiled"
-DOTFILES_CURRENT="$PATH_SCRIPT/current"
+LINK_REPOSITORY="https://github.com/henrikbeck95/dotfiles.git"
+PATH_REPOSITORY=$HOME/.dotfiles
+#PATH_DOTFILE=$PATH_REPOSITORY/src
+PATH_DOTFILE=$PATH_REPOSITORY/current
+PATH_DOTFILE_LOG=/var/log/dotfiles
+PATH_DOTFILE_LOG_TEMP=/tmp/dotfiles_log_temp
+PATH_DOTFILE_REMOVE=/tmp/dotfiles_log_remove
+
+#Testing
+PATH_DOTFILE_BACKUP=$PATH_REPOSITORY/backup
+PATH_DOTFILE_COMPILED="$PATH_REPOSITORY/compiled"
+PATH_DOTFILE_CURRENT=""
 
 MESSAGE_HELP="
 \t\t\tDotfiles backup tool
@@ -17,36 +26,44 @@ MESSAGE_HELP="
 -r\t--replace\t\t\tReplace the current dotfiles by the compiled ones
 "
 
+MESSAGE_BACKUP_NOT_AVAILABLE="No backup availables! How about creating an one!?"
+
 MESSAGE_ERROR="Invalid option for $0!\n$MESSAGE_ERROR"
 
 tools_backup_create(){
-	#local DATE_TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
 	local DATE_TIMESTAMP=$(date +%s)
-	local DOTFILES_BACKUP="$PATH_SCRIPT/backup/$DATE_TIMESTAMP"
-
-	mkdir -p $DOTFILES_BACKUP/
-	cp $DOTFILES_CURRENT/* $DOTFILES_BACKUP/
+	mkdir -p $PATH_DOTFILE_BACKUP/$DATE_TIMESTAMP/
+	cp $PATH_DOTFILE/* $PATH_DOTFILE_BACKUP/$DATE_TIMESTAMP/
 }
 
 tools_backup_list(){
-	for BACKUP_VERSION in $(ls $DOTFILES_BACKUP/); do
-		local DATE_TIMESTAMP_VERSION="$BACKUP_VERSION"
-		local DATE_TIMESTAMP_REVERSE=$(date -d "@$DATE_TIMESTAMP_VERSION")
-		echo -e "$DATE_TIMESTAMP_VERSION:\t$DATE_TIMESTAMP_REVERSE"
-	done;
+	#Check if there is/are backup(s) available
+	if [[ ! -d $PATH_DOTFILE_BACKUP/ ]];then
+		echo -e "$MESSAGE_BACKUP_NOT_AVAILABLE\nDirectory does not exists."
+	elif [[ -z "$(ls -A $PATH_DOTFILE_BACKUP/)" ]];then
+		echo -e "$MESSAGE_BACKUP_NOT_AVAILABLE\nThere is/are no backup(s) file(s) in directory."
+	else
+		for BACKUP_VERSION in $(ls $PATH_DOTFILE_BACKUP/); do
+			local DATE_TIMESTAMP_VERSION="$BACKUP_VERSION"
+			local DATE_TIMESTAMP_REVERSE=$(date -d "@$DATE_TIMESTAMP_VERSION")
+			echo -e "$DATE_TIMESTAMP_VERSION:\t$DATE_TIMESTAMP_REVERSE"
+		done;
+	fi
 }
 
+#MUST BE TESTED
 tools_backup_restore(){
 	#Get last backup version
-	local BACKUP_VERSION_LATEST=$(ls $DOTFILES_BACKUP/ | tail -1)
+	local BACKUP_VERSION_LATEST=$(ls $PATH_DOTFILE_BACKUP/ | tail -1)
 
 	#Replace the current version by the backup version
-	cp $DOTFILES_BACKUP/$BACKUP_VERSION_LATEST/* $DOTFILES_CURRENT/
+	cp $PATH_DOTFILE_BACKUP/$BACKUP_VERSION_LATEST/* $PATH_DOTFILE/
 }
 
+#MUST BE TESTED
 tools_replace_current(){
 	tools_backup_create
-	cp $DOTFILES_COMPILED/* $DOTFILES_CURRENT/
+	cp $PATH_DOTFILE_COMPILED/* $PATH_DOTFILE/
 }
 
 clear
