@@ -1,0 +1,170 @@
+#!/bin/bash
+
+_TIME=30
+_TIME_MILISECONDS=$(($_TIME*1000))
+
+_LIMIT_PERCENTAGE_BUFFER_CACHE=80
+_LIMIT_PERCENTAGE_CACHE=80
+_LIMIT_PERCENTAGE_RAM=50
+_LIMIT_PERCENTAGE_SWAP=50
+
+#Example (free -m)
+#			total        used        free      shared  buff/cache   available
+#Mem:       7.7Gi       3.2Gi       3.0Gi       315Mi       1.5Gi       4.0Gi
+#Swap:      1.0Gi       5.0Mi       1.0Gi
+
+#Check space:
+_MEMORY_TOTAL=$(free -m | awk '/Mem:/ { print $2 } /buffers\/cache/ { print $3 }')
+_SWAP_TOTAL=$(free -m | awk '/Swap:/ { print $2 } /buffers\/cache/ { print $3 }')
+
+_MEMORY_USED=$(free -m | awk '/Mem:/ { print $3 } /buffers\/cache/ { print $3 }')
+_SWAP_USED=$(free -m | awk '/Swap:/ { print $3 } /buffers\/cache/ { print $3 }')
+
+#_MEMORY_FREE=$(free -m | awk '/Mem:/ { print $4 } /buffers\/cache/ { print $3 }')
+_MEMORY_FREE=$(($_MEMORY_TOTAL-$_MEMORY_USED))
+_SWAP_FREE=$(free -m | awk '/Swap:/ { print $4 } /buffers\/cache/ { print $3 }')
+
+_MEMORY_SHARED=$(free -m | awk '/Mem:/ { print $5 } /buffers\/cache/ { print $3 }')
+
+_MEMORY_BUFFER_CACHE=$(free -m | awk '/Mem:/ { print $6 } /buffers\/cache/ { print $3 }')
+
+#_MEMORY_AVALIABLE=$(free -m | awk '/Mem:/ { print $7 } /buffers\/cache/ { print $3 }')
+
+#_MEMORY_PERCENTAGE=$(($_MEMORY_FREE*100/$_MEMORY_TOTAL))
+_MEMORY_PERCENTAGE=$(($_MEMORY_USED*100/$_MEMORY_TOTAL))
+_SWAP_PERCENTAGE=$(($_SWAP_USED*100/$_SWAP_TOTAL))
+
+_main(){
+	while true; do
+		#echo " $_MEMORY_PERCENTAGE % |  Used: $_MEMORY_USED |  Free: $_MEMORY_FREE |  Total: $_MEMORY_TOTAL"
+
+		#echo " $_SWAP_PERCENTAGE % |  Used: $_SWAP_USED |  Free: $_MEMORY_FREE |  Total: $_SWAP_TOTAL"
+
+		_alert_memory_ram
+		#_clean_memory_buffer_cache
+		#_clean_memory_swap
+		#_switch_memory_swap
+
+		#_browser_mozilla_firefox_backup
+		#_browser_mozilla_firefox_restore
+
+		sleep $_TIME
+	done
+}
+
+#############################
+#Memory
+#############################
+
+# Make sure only root can run script
+_check_if_superuser(){
+	if [ "$(id -u)" != "0" ]; then
+		echo "This script must be run as root" 1>&2
+		exit 1
+	fi
+}
+
+_alert_memory_ram(){
+	#if [[ $_MEMORY_PERCENTAGE -gt _LIMIT_PERCENTAGE_RAM ]]; then
+	if [[ $_MEMORY_FREE -gt _LIMIT_PERCENTAGE_RAM ]]; then
+        #notify-send -u low -t 1500 --urgency=critical --icon=battery-caution "RAM memory" "The consume is so high"
+        notify-send -u low -t $_TIME_MILISECONDS --urgency=critical "RAM memory" "The consume is so high"
+
+		_browser_mozilla_firefox_backup
+		#_browser_mozilla_firefox_clean_cache
+		#_browser_mozilla_firefox_clean_cookies
+	
+	#else
+		#_browser_mozilla_firefox_backup
+	fi
+}
+
+#Buffer/cache memory high consumition
+_clean_memory_buffer_cache(){
+	_check_if_superuser
+
+	if [[ $_MEMORY_BUFFER_CACHE -gt _LIMIT_PERCENTAGE_BUFFER_CACHE ]]; then
+		#Limpa o que der sem prejudicar o sistema
+
+		#0 = Default value.
+		#1 = Clear PageCache only.
+		#2 = Clear dentries and inodes.
+		#3 = Clear PageCache, dentries and inodes.
+
+		_DROP_CACHE_VALUE=3
+		
+		#Note, we are using "echo 3", but it is not recommended in production instead use "echo 1"
+		#echo $_DROP_CACHE_VALUE | sudo tee /proc/sys/vm/drop_caches
+		#echo $_DROP_CACHE_VALUE > /proc/sys/vm/drop_caches
+		sync; echo 3 > /proc/sys/vm/drop_caches
+
+		notify-send -u low -t $_TIME_MILISECONDS --urgency=critical "The buffer/cache has been clean"
+	fi
+}
+
+#SWAP memory high consumition
+_clean_memory_swap(){
+	if [[ ??? -gt _LIMIT_PERCENTAGE_BUFFER_CACHE ]]; then
+		#Disable and enable the swap memory to reset it
+		swapoff -a && swapon -a
+
+		notify-send -u low -t $_TIME_MILISECONDS --urgency=critical "The swap has been clean"
+	fi
+}
+
+#Turn on/off swap memory according to ram memory needs
+_switch_memory_swap(){
+	_check_if_superuser
+
+	if [[ $_MEMORY_PERCENTAGE -gt _LIMIT_PERCENTAGE_RAM ]]; then
+		#Enable swap memory
+		swapon -a
+	else
+		#Disable swap memory
+
+		#Wait approx 30 sec (use free -m to see the amount of swap used/available decrease over time)
+		swapoff -a
+	fi
+}
+
+#############################
+#Browser
+#############################
+#_manager_browser_???.sh
+
+#_DIRECTORY=""
+#-BACKUP=""
+
+_browser_mozilla_firefox_backup(){
+    #But, better you can make a backup of these files if you want to restore them latter:
+
+    mkdir -p ~/.mozilla/firefox/backup ~/.cache/mozilla/firefox/backup
+    mv ~/.mozilla/firefox/*.default/*.sqlite  ~/.mozilla/firefox/backup
+    mv ~/.mozilla/firefox/*.default/sessionstore.js ~/.mozilla/firefox/backup
+    mv ~/.cache/mozilla/firefox/*.default/* ~/.cache/mozilla/firefox/backup
+}
+
+_browser_mozilla_firefox_clean_cache(){
+    #To clean all the cache, you can use:
+
+    rm ~/.mozilla/firefox/*.default/*.sqlite ~/.mozilla/firefox/*default/sessionstore.js
+    rm -r ~/.cache/mozilla/firefox/*.default/*
+}
+
+_browser_mozilla_firefox_clean_cookies(){
+    #To clean the cookies from terminal you can use the following command:
+
+    rm ~/.mozilla/firefox/*.default/cookies.sqlite
+}
+
+_browser_mozilla_firefox_restore(){
+	_browser_mozilla_firefox_clean_cache
+	_browser_mozilla_firefox_clean_cookies
+	
+    #mkdir -p ~/.cache/mozilla/firefox/backup ~/.mozilla/firefox/backup
+    mv ~/.mozilla/firefox/backup mv ~/.mozilla/firefox/*.default/*.sqlite
+	mv ~/.mozilla/firefox/backup mv ~/.mozilla/firefox/*.default/sessionstore.js
+	mv ~/.cache/mozilla/firefox/backup mv ~/.cache/mozilla/firefox/*.default/*
+}
+
+_main

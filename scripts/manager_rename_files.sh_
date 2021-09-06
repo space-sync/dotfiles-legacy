@@ -1,0 +1,24 @@
+#!/bin/bash
+
+_copyFromOrigin_to_destiny_renaming(){
+    _ORIGIN="/home/henrikbeck95/Downloads/Imagens/Screenshot"
+    _DESTINY="/home/henrikbeck95/Downloads/Imagens/Screenshot2"
+    
+    IFS=!
+    COUNT="1"
+    #FILENAME="screenshot_"
+    FILENAME=""
+    FILELIST=(`find $_ORIGIN/* -printf %f!`)
+    #echo ${FILELIST[*]}
+    #echo ${FILELIST[3]}
+
+    for ((i = 0; i < 12; ++i)); do
+        #MUDAR DEPOIS PARA: FROM USING TO SYSTEM
+        cp $_ORIGIN/${FILELIST[$i]} $_DESTINY/"$FILENAME_$COUNT.png"
+        let COUNT++;
+    done
+
+    #rm -fr $_ORIGIN/*
+}
+
+_copyFromOrigin_to_destiny_renaming
