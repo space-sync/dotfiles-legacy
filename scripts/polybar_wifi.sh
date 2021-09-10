@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env sh
 
 _wifi_signal(){
     _MAX_SIGNAL=70
@@ -22,7 +22,7 @@ _wifi_signal(){
         _ICON="" #😃
     fi
 
-    echo "$_QUALITY_PORCENTAGE % $_ICON"
+    echo "$_QUALITY_PORCENTAGE % $_ICON   "
 }
 
 _wifi_name(){

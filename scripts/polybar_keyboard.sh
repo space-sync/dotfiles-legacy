@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env sh
 
 _COLOR_ON="ffffff"
 _COLOR_OFF="0a81f5"
@@ -57,7 +57,7 @@ locks_buttons_color(){
 _LOCKS_BUTTONS_COLOR=$(locks_buttons_color)
 _KEYBOARD=$(keyboard_layout)
 
-echo " $_KEYBOARD \t $_LOCKS_BUTTONS_COLOR"
+echo " $_KEYBOARD   $_LOCKS_BUTTONS_COLOR"
 
 ##echo "$_TIME"
 #echo -n "%{F#ed0beb}$_TIME"

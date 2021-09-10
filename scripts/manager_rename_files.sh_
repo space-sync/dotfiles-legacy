@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 _copyFromOrigin_to_destiny_renaming(){
     _ORIGIN="/home/henrikbeck95/Downloads/Imagens/Screenshot"

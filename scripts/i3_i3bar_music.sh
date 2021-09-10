@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 _spotify(){
     cmd="org.freedesktop.DBus.Properties.Get"

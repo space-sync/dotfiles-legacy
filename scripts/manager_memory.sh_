@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 _TIME=30
 _TIME_MILISECONDS=$(($_TIME*1000))

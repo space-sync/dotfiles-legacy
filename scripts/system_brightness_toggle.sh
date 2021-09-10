@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 _BRIGHTNESS_CURRENT=$(cat /sys/class/backlight/intel_backlight/brightness)
 _BRIGHTNESS_NORMAL=50

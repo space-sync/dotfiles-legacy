@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env sh
 
 _memory(){
 	#Free: Espaço de memória que está completamente sem uso, nem por aplicações, nem pelo kernel, shared, buffers ou cache.
@@ -16,7 +16,7 @@ _memory(){
 	#_MEMORY_PERCENTAGE=$(($_MEMORY_FREE*100/$_MEMORY_TOTAL))
 	_MEMORY_PERCENTAGE=$(($_MEMORY_USED*100/$_MEMORY_TOTAL))
 	
-	echo "Memory  $_MEMORY_PERCENTAGE % |  Used: $_MEMORY_USED |  Free: $_MEMORY_FREE |  Total: $_MEMORY_TOTAL"
+	echo "Memory    $_MEMORY_PERCENTAGE % |    Used: $_MEMORY_USED |    Free: $_MEMORY_FREE |    Total: $_MEMORY_TOTAL"
 }
 
 _MEMORY=$(_memory)

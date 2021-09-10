@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env sh
 
 _CAPS_LOCK=$(xset q | grep Caps | awk '{print $4}')
 _NUM_LOCK=$(xset q | grep Num | awk '{print $8}')

@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env sh
 
 _WEEK=$(date +%w)
 _DAY=$(date +%d/%m/%Y)

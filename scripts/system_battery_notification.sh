@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 #xbacklight -inc 10 && notify-send -u low -t 1500 "Brightness Up $ICON_UP"
 #notify-send --urgency=critical --icon=battery-caution "Full charged. Remove the charger"

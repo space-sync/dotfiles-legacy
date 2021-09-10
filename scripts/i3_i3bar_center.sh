@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 _battery(){
 	_BATTERY_PERCENTAGE=$(acpi -b | grep -E -o '[0-9][0-9]?%')

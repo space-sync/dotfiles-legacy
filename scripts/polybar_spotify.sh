@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 if ! pgrep -x spotify >/dev/null; then
     echo ""; exit

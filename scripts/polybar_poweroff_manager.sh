@@ -1,12 +1,12 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env sh
 
 #--entry --image=/usr/share/???.png
 
 #_LOCK="i3lock -n --color '#0a81f5'"
-_LOCK="/home/henrikbeck95/.config/my_dotfiles/i3/scripts/matrix_lock.sh"
+_LOCK="/home/joker/.dotfiles/scripts/system_matrix_lock.sh"
 
 action=$(yad \
---title "LORD Poweroff manager" \
+--title "Poweroff manager" \
 --height 100 \
 --width 500 \
 --entry \

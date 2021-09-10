@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env sh
 
 process_redshift=$(pgrep -x redshift)
 
@@ -11,4 +11,4 @@ else
 fi
 
 #Change the theme mode
-/usr/share/lord/scripts/system_theme_mode_switch.sh
+#/usr/share/lord/scripts/system_theme_mode_switch.sh

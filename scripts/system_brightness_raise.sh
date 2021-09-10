@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env sh
+
 _INCREMENT=5
 
 _GET_BRIGHTNESS=$(cat /sys/class/backlight/intel_backlight/brightness)

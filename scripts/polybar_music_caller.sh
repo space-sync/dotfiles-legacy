@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 #_COLOR_SPOTIFY="0F0"
 #_COLOR_VLC="f78302"

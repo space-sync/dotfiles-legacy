@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 #Choosing the terminal
 #gnome-terminal -e cmatrix &

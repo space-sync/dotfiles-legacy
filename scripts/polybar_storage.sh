@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env sh
 
 _STORAGE_ROOT=$(df | awk '{print $0}' | grep '/$' | awk '{print $5}')
-echo " /: $_STORAGE_ROOT"
+echo "   /: $_STORAGE_ROOT"

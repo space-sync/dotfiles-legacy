@@ -13,8 +13,8 @@ mode dock|hide|invisible
 hidden_state hide|show
 modifier <Modifier>|none
 
-bindsym --release $mod exec i3-msg bar mode dock
-bindsym $mod exec i3-msg bar mode hide
+#bindsym --release $mod exec i3-msg bar mode dock
+#bindsym $mod exec i3-msg bar mode hide
 
 ## Toggle between hide state and show state
 bindsym $COMMAND + Z bar hidden_state toggle
