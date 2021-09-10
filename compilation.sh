@@ -24,6 +24,7 @@ _DEFINITION="$_MY_DOTFILES_DIRECTORY/global/02_Definition.md"
 _LICENSE="$_MY_DOTFILES_DIRECTORY/global/03_License.md"
 
 #System configuration files
+_ALACRITTY="$PATH_SCRIPT_OUTPUT/alacritty.yml"
 _ALBERT="$PATH_SCRIPT_OUTPUT/albert.conf"
 _BASHRC="$PATH_SCRIPT_OUTPUT/.bashrc"
 _CAVA="$PATH_SCRIPT_OUTPUT/cava.conf"
@@ -69,6 +70,7 @@ MESSAGE_HELP="
 -h\t\t--help\t-?\t\t\tDisplay this help message
 -e\t\t--edit\t\t\t\tEdit this script file
 -c-all\t\t--compile-all\t\t\tCompile all dotfiles at once
+-c-alacritty\t--compile-alacritty\t\tCompile ??? dotfiles
 -c-albert\t--compile-albert\t\tCompile ??? dotfiles
 -c-bash\t\t--compile-bash\t\t\tCompile ??? dotfiles
 -c-cava\t\t--compile-cava\t\t\tCompile ??? dotfiles
@@ -120,6 +122,16 @@ tools_apply_header(){
 
 tools_apply_manual(){
 	cat $_MANUAL >> $1
+}
+
+#MUST BE TESTED
+generate_alacritty(){
+	display_message "Compiling Alacritty dotfile..."
+	tools_create_folder $PATH_SCRIPT_OUTPUT/
+	tools_clear_file $_ALACRITTY
+	tools_apply_header $_ALACRITTY
+	tools_apply_manual $_ALACRITTY
+    cat $_MY_DOTFILES_DIRECTORY/alacritty/*.yml >> $_ALACRITTY
 }
 
 generate_albert(){
@@ -354,6 +366,15 @@ case $AUX1 in
 	"" | "-h" | "--help" | "-?") echo -e "$MESSAGE_HELP" ;;
 	"-e" | "--edit") $EDITOR $0 ;;
 	"-c-all" | "--compile-all") compile_all ;;
+	"-c-alacritty" | "--compile-alacritty") generate_alacritty ;;
+
+	#"-c-" | "--compile-") generate_ ;;
+	#"-c-" | "--compile-") generate_ ;;
+	#"-c-" | "--compile-") generate_ ;;
+	#"-c-" | "--compile-") generate_ ;;
+	#"-c-" | "--compile-") generate_ ;;
+	#"-c-" | "--compile-") generate_ ;;
+
 	"-c-albert" | "--compile-albert") generate_albert ;;
 	"-c-bash" | "--compile-bash") generate_bash ;;
 	"-c-cava" | "--compile-cava") generate_cava ;;

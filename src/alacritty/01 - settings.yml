@@ -1,0 +1,16 @@
+env:
+  TERM: alacritty
+window:
+  title: Alacritty
+  dynamic_title: true
+  dynamic_padding: true
+  padding: 
+    x: 4
+    y: 4
+  class:
+    instance: Alacritty
+    general: Alacritty
+  gtk_theme_variant: None
+scrolling:
+  history: 16384
+  multiplier: 1

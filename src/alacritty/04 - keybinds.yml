@@ -1,0 +1,15 @@
+bell:
+  animation: EaseOutExpo
+  duration: 0
+  color: '#ffffff'
+cursor:
+  style: Underline
+background_opacity: 1
+selection:
+  semantic_escape_chars: ", | `|:\"' ()[]{}<>\t"
+  save_to_clipboard: false
+mouse:
+  double_click: {threshold: 300}
+  triple_click: {threshold: 300}
+mouse_bindings:
+  - {mouse: Middle, action: Copy}

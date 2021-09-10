@@ -9,12 +9,16 @@ PS1='[\u@\h \W]\$ '
 #Customization
 #############################
 
+eval "$(starship init bash)"
+
 alias discord="$HOME/sharing/stuffs/softwares/linux/appimages/Discord-latest-x86_64.AppImage"
 
 #export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$HOME/.local/bin/"
 #export PATH="$PATH:$HOME/.local/bin/"
 #export PATH="$HOME/.pyenv/bin:$PATH"
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$HOME/.local/bin/:$HOME/.pyenv/bin"
+
+export APPIMAGE="$HOME/sharing/stuffs/softwares/linux/appimages/"
 
 export TCC="$HOME/sharing/projects_myself/trabalho_conclusao_curso/"
 export VAL="$HOME/Downloads/val/val_python/"
