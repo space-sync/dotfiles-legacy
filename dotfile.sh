@@ -141,6 +141,9 @@ dotfiles_update(){
 	tools_check_if_software_is_installed "HTop"
 	[ $? == 0 ] && apply_htop
 
+	tools_check_if_software_is_installed "i3"
+	[ $? == 0 ] && apply_i3
+
 	tools_check_if_software_is_installed "LF"
 	[ $? == 0 ] && apply_lf
 
@@ -232,6 +235,18 @@ apply_htop(){
 	display_message_applying "$APPLICATION_NAME"
 	mkdir -p $HOME/.config/htop/
 	ln -sf $PATH_DOTFILE/htoprc $APPLICATION_PATH
+
+	echo -e "$APPLICATION_NAME|$APPLICATION_PATH" >> $PATH_DOTFILE_LOG_TEMP
+}
+
+#MUST BE TESTED
+apply_i3(){
+	local APPLICATION_NAME="i3"
+	local APPLICATION_PATH="$HOME/.config/i3/config"
+
+	display_message_applying "$APPLICATION_NAME"
+	mkdir -p $HOME/.config/i3/
+	ln -sf $PATH_DOTFILE/i3 $APPLICATION_PATH
 
 	echo -e "$APPLICATION_NAME|$APPLICATION_PATH" >> $PATH_DOTFILE_LOG_TEMP
 }
