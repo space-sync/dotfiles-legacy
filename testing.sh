@@ -17,6 +17,14 @@ compilation_dotfiles(){
 	/home/joker/.dotfiles/compilation.sh -c-all
 }
 
+link_file_cava(){
+	mkdir -p $HOME/.config/cava/
+
+	ln -sf \
+		/home/joker/.dotfiles/compiled/cava.conf \
+		/home/joker/.config/cava/config
+}
+
 link_file_i3(){
 	mkdir -p $HOME/.config/i3/
 
@@ -48,6 +56,7 @@ apply_i3(){
 
 xxx(){
 	compilation_dotfiles
+	link_file_cava
 	link_file_i3
 	link_file_picom
 	link_file_polybar

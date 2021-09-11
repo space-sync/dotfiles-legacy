@@ -103,6 +103,7 @@
     #  * foreground: use the same color as the foreground;
     #  * frame: use the same color as the frame;
     #  * anything else will be interpreted as a X color.
+    #separator_color = auto
     separator_color = frame
 
     # Sort messages by urgency.
@@ -120,7 +121,8 @@
 
     #font = Fantasque Sans Mono NF:size=11
     #font = Fira Code:size=11
-    font = SFMono Regular Italic:size=9
+    font = FiraCode NF:size=11
+    #font = SFMono Regular Italic:size=9
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -214,7 +216,7 @@
     sticky_history = yes
 
     # Maximum amount of notifications kept in history
-    history_length = 200
+    history_length = 10
 
 #############################
 #Misc/Advanced

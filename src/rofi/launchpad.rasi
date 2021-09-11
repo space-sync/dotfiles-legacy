@@ -1,0 +1,128 @@
+configuration {
+    disable-history:                true;
+    display-drun: 					"";
+    drun-display-format:            "{name}";
+	font:							"FiraCode NF Bold 10";
+	icon-theme: 					"breeze-dark";
+    show-icons:                     true;
+	sidebar-mode: 					false;
+}
+
+* {
+	background-transparency:		#FFFFFF60;
+    background: 					#0D011EEF;
+    white:							#FFFFD8;
+	selection:						#3f2680;
+	comment:						#6272A4;
+	cyan:							#2BDCFF;
+	lightcyan:						#BDF3FF;
+	green:							#50FA7B;
+	orange:							#FD947C;
+	pink:							#FF78B1;
+	lightpink:						#FFC4E8;
+	purple:							#BD93F9;
+	red:							#FD1D53;
+	yellow:							#FFFA50AA;
+}
+
+window {
+	/*
+    transparency:                   "real";
+	*/
+    transparency:                   "background";
+    background-color:               @background-transparency;
+    text-color:                     @white;
+	border:							0px;
+	border-color:					@border;
+    border-radius:                  0px;
+	width:							100%;
+	height:							100%;
+}
+
+prompt {
+	background-color: 				@comment;
+    enabled: 						true;
+	font:							"FiraCode NF Bold 10";
+	padding: 						0.30% 1% 0% -0.5%;
+	text-color: 					@white;
+}
+
+entry {
+    background-color:              	@comment;
+    blink:                          true;
+    expand:                         true;
+    horizontal-align:               0;
+    padding:                        0.10% 0% 0% 0%;
+    placeholder:                    "Searching...";
+    placeholder-color:              @white;
+	position:                       center;
+    text-color:                     @white; //Cursor
+}
+
+inputbar {
+    background-color:               @comment; //Border
+	border:							0.1%;
+	border-color:					@comment; //Shadow
+    border-radius:                  7px;
+	children: 						[ prompt, entry ];
+    expand:                         false;
+    margin:                         0% 25% 0% 25%;
+    padding:                        1%;
+    text-color:                     @white;
+}
+
+mainbox {
+    background-color:               @background;
+	border:							0% 0% 0% 0%;
+	border-color:					@background;
+    border-radius:                  0% 0% 0% 0%;
+    children:                       [ inputbar, listview ];
+    padding:                        5% 4% 5% 4%;
+    spacing:                       	4%;
+}
+
+listview {
+    background-color:               @background;
+    border-radius:                  12px;
+    columns:                        7;
+    cycle:                          true;
+    dynamic:                        true;
+    layout:                         vertical;
+    lines:                          5;
+    spacing:                        2%;
+}
+
+element {
+    background-color:               @background;
+    border-radius:                  0%;
+    border-radius:                  12px;
+    orientation:                    vertical;
+    padding:                        2.5% 0% 2.5% 0%;
+    text-color:                     @white;
+}
+
+element selected {
+    background-color:               @selection;
+	border:							0% 0% 0% 0%;
+    border-color:                  	@selection;
+    border-radius:                  12px;
+    text-color:                     @white;
+}
+
+element-icon {
+    background-color: 				inherit;
+    border:                         0px;
+    horizontal-align:               0.5;
+    size:                           72px;
+    text-color:       				@white;
+    vertical-align:                 0.5;
+}
+
+element-text {
+    background-color: 				inherit;
+    expand:                         true;
+    horizontal-align:               0.5;
+    margin:                         0.5% 0.5% -0.5% 0.5%;
+    text-color:       				@white;
+    vertical-align:                 0.5;
+}
