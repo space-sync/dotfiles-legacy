@@ -124,6 +124,15 @@ tools_apply_manual(){
 	cat $_MANUAL >> $1
 }
 
+tools_replace_variables(){
+	local FILENAME=$(cat $1)
+	local STRING_OLD=$2
+	local STRING_NEW=$3 #"/home/joker/.dotfiles"
+
+	#Replacing all strings matches occurrences in a file using ${parameter//pattern/string}
+	echo "${FILENAME//$STRING_OLD/$STRING_NEW}" > $1
+}
+
 #MUST BE TESTED
 generate_alacritty(){
 	display_message "Compiling Alacritty dotfile..."
@@ -215,6 +224,7 @@ generate_i3(){
 	tools_apply_header $_i3
 	tools_apply_manual $_i3
     cat $_MY_DOTFILES_DIRECTORY/i3/*/*.conf >> $_i3
+	tools_replace_variables $_i3 "\$DOTFILES" "$PATH_SCRIPT"
 }
 
 generate_lyrics_in_terminal(){
