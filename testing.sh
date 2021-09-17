@@ -25,6 +25,14 @@ link_file_cava(){
 		/home/joker/.config/cava/config
 }
 
+link_file_dunst(){
+	mkdir -p $HOME/.config/dunst/
+
+	ln -sf \
+		/home/joker/.dotfiles/compiled/dunstrc \
+		/home/joker/.config/dunst/dunstrc
+}
+
 link_file_i3(){
 	mkdir -p $HOME/.config/i3/
 
@@ -57,6 +65,7 @@ apply_i3(){
 xxx(){
 	compilation_dotfiles
 	link_file_cava
+	link_file_dunst
 	link_file_i3
 	link_file_picom
 	link_file_polybar
