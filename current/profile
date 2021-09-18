@@ -23,4 +23,4 @@ if [ "$TERM" = "linux" ]; then
 	clear
 fi
 
-#export PATH="$HOME/.poetry/bin:$PATH"
+export QT_QPA_PLATFORMTHEME=gtk2

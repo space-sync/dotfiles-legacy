@@ -1,7 +1,6 @@
 #!/usr/bin/env sh
 
 #PATH_SCRIPT="$(dirname "$(readlink -f "$0")")"
-#Change the $BRIGHTNESS_PATH file owner 
 
 #############################
 #Declaring variables
@@ -16,11 +15,11 @@ TERMINAL_COLOR_KEYBOARD="DDDDDD"
 
 BRIGHTNESS_PATH="/sys/class/backlight/intel_backlight/brightness"
 BRIGHTNESS_CURRENT=$(cat $BRIGHTNESS_PATH)
-BRIGHTNESS_DIFF=5
+BRIGHTNESS_DIFF=10
 BRIGHTNESS_DECREASE=$BRIGHTNESS_DIFF
 BRIGHTNESS_INCREASE=$BRIGHTNESS_DIFF
 BRIGHTNESS_MAX=937
-BRIGHTNESS_MIN=40
+BRIGHTNESS_MIN=10
 BRIGHTNESS_NORMAL=50
 
 MESSAGE_HELP="
@@ -42,7 +41,7 @@ Change the system brightness value from the operating system.
 --toogle\t--brightness-toogle\t\tToogle system brightness values between $BRIGHTNESS_NORMAL and $BRIGHTNESS_MAX values
 
 [Examples]
-sudo $0 --chown username
+sudo $0 --chown your_username
 $0 --get
 $0 --up
 $0 --down
@@ -83,10 +82,12 @@ brightness_apply(){
 	display_message_debug "$1"
 
 	#Verify if the brightness to be applied is a valid value
-	if [[ $1 < $BRIGHTNESS_MIN ]]; then
+	#if [[ $1 < $BRIGHTNESS_MIN ]]; then
+	if [[ $1 -lt $BRIGHTNESS_MIN ]]; then
 		echo -e "Brightness value you are trying to set is under the min value"
 		exit
-	elif [[ $1 > $BRIGHTNESS_MAX ]]; then
+	#elif [[ $1 > $BRIGHTNESS_MAX ]]; then
+	elif [[ $1 -gt $BRIGHTNESS_MAX ]]; then
 		echo -e "Brightness value you are trying to set is above the max value"
 		exit
 	else
@@ -98,10 +99,12 @@ brightness_apply(){
 brightness_get_current(){
 	PROCESS_REDSHIFT=$(pgrep -x redshift)
 
+	BRIGHTNESS_PORCENTAGE=$(($BRIGHTNESS_CURRENT/10))
+
 	if [[ ! $PROCESS_REDSHIFT ]]; then
-		display_message "%{F#$TERMINAL_COLOR_OFF}   $BRIGHTNESS_CURRENT"
+		display_message "%{F#$TERMINAL_COLOR_OFF}   $BRIGHTNESS_PORCENTAGE %"
 	else
-		display_message "%{F#$TERMINAL_COLOR_ON}   $BRIGHTNESS_CURRENT"
+		display_message "%{F#$TERMINAL_COLOR_ON}   $BRIGHTNESS_PORCENTAGE %"
 	fi
 }
 
