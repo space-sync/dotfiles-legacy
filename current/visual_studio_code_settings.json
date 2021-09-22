@@ -47,7 +47,7 @@
 	//"editor.fontFamily": "MesloLGM Nerd Font",
 	//"editor.fontFamily": "Fira Code",
 	//"editor.fontFamily": "Fira Code Regular",
-	//"editor.fontFamily": "FiraCode Nerd Font",
+	"editor.fontFamily": "FiraCode Nerd Font",
 	//"editor.fontFamily": "FiraCode Nerd Font Mono",
 	"editor.fontLigatures": true,
 	"explorer.compactFolders": false,
@@ -57,7 +57,6 @@
 	"files.defaultLanguage": "markdown",
 	"workbench.startupEditor": "none",
 	"editor.tabSize": 4,
-	"window.zoomLevel": 0,
 	"workbench.commandPalette.history": 10, //Capacidade de armazenamento do ctrl + shift + P (default = 50):
 	"files.autoSave": "off",
 	"explorer.confirmDragAndDrop": false, //Pergunta para abrir um arquivo que foi arrastado ate a tela.

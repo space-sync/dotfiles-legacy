@@ -164,6 +164,11 @@ dotfiles_update(){
 	tools_check_if_software_is_installed "xrdb"
 	[ $? == 0 ] && apply_xresources
 
+	#MUST BE TESTED
+	#tools_check_if_software_is_installed "codium"
+	#[ $? == 0 ] && apply_visual_studio_code
+	apply_visual_studio_code
+
 	column -t -s '|' $PATH_DOTFILE_LOG_TEMP > $PATH_DOTFILE_LOG
 	rm $PATH_DOTFILE_LOG_TEMP
 }
@@ -345,6 +350,23 @@ apply_vim_vundle(){
 
 	echo -e "$APPLICATION_NAME|$APPLICATION_PATH" >> $PATH_DOTFILE_LOG_TEMP
 }
+
+#MUST BE TESTED
+apply_visual_studio_code(){
+#visual_studio_code_keybindings.json
+#visual_studio_code_settings.json
+	local APPLICATION_NAME="Visual Studio Codium"
+	local APPLICATION_PATH_KEYBINDS="$HOME/.config/VSCodium/User/keybindings.json"
+	local APPLICATION_PATH_SETTINGS="$HOME/.config/VSCodium/User/settings.json"
+
+	display_message_applying "$APPLICATION_NAME"
+	ln -sf $PATH_DOTFILE/visual_studio_code_keybindings.json $APPLICATION_PATH_KEYBINDS
+	ln -sf $PATH_DOTFILE/visual_studio_code_settings.json $APPLICATION_PATH_SETTINGS
+
+	echo -e "$APPLICATION_NAME|$APPLICATION_PATH_KEYBINDS" >> $PATH_DOTFILE_LOG_TEMP
+	echo -e "$APPLICATION_NAME|$APPLICATION_PATH_SETTINGS" >> $PATH_DOTFILE_LOG_TEMP
+}
+
 
 apply_xresources(){
 	local APPLICATION_NAME="Xresources"

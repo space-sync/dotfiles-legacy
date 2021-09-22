@@ -1,16 +1,16 @@
     //Terminal integrado:
-    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.fontSize": 12,
 
     //"terminal.integrated.fontFamily": "",
     //"terminal.integrated.fontFamily": "monospace",
 
     //"terminal.integrated.fontFamily": "Fantasque Sans Mono",
-    "terminal.integrated.fontFamily": "mononoki",
+    //"terminal.integrated.fontFamily": "mononoki",
 
     //"terminal.integrated.fontFamily": "Cascadia Mono",
     //"terminal.integrated.fontFamily": "Hack",
 
-    //"terminal.integrated.fontFamily": "MesloLGS NF",
+    "terminal.integrated.fontFamily": "MesloLGS NF",
     //"terminal.integrated.fontFamily": "MesloLGM Nerd Font",
     //"terminal.integrated.fontFamily": "Meslo LG M DZ for Powerline",
     
@@ -21,15 +21,15 @@
     "terminal.integrated.fontWeight": "normal",
     
     //Linux
-    //"terminal.integrated.shell.linux": "/bin/bash",
+    "terminal.integrated.shell.linux": "/bin/bash",
     //"terminal.integrated.shell.linux": "/bin/zsh",
     //"terminal.external.linuxExec": "xterm",
     //"terminal.external.linuxExec": "/usr/bin/alacritty",
     
     //Linux (Flatpaks):
     ///app/share/ide-flatpak-wrapper/README.md
-    "terminal.integrated.shell.linux": "/usr/bin/env",
-    "terminal.integrated.shellArgs.linux": ["--", "flatpak-spawn", "--host", "bash"]
+    //"terminal.integrated.shell.linux": "/usr/bin/env",
+    //"terminal.integrated.shellArgs.linux": ["--", "flatpak-spawn", "--host", "bash"]
 
     //MacOS
     //"terminal.integrated.shell.osx": "/bin/zsh",

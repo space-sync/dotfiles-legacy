@@ -57,7 +57,8 @@ locks_buttons_color(){
 _LOCKS_BUTTONS_COLOR=$(locks_buttons_color)
 _KEYBOARD=$(keyboard_layout)
 
-echo " $_KEYBOARD   $_LOCKS_BUTTONS_COLOR"
+#echo "   $_KEYBOARD    $_LOCKS_BUTTONS_COLOR"
+echo "$_KEYBOARD    $_LOCKS_BUTTONS_COLOR"
 
 ##echo "$_TIME"
 #echo -n "%{F#ed0beb}$_TIME"

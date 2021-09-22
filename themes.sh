@@ -73,16 +73,67 @@ netbeans_dracula_theme(){
 	echo "Must be implemented"
 }
 
+#MUST BE TESTED
 visual_studio_code_extension(){
-	echo "Must be implemented"
+	#Normal/Snap installation
+	#local VISUAL_STUDIO_CODE="code"
+	local VISUAL_STUDIO_CODE="codium"
+
+	#TESTING
+	#local VISUAL_STUDIO_CODE="$HOME/sharing/stuffs/softwares/linux/appimages/VSCodium-1.60.0-1630974030.glibc2.17-x86_64.AppImage code"
+	#local VISUAL_STUDIO_CODE="$HOME/sharing/stuffs/softwares/linux/appimages/VSCodium-1.60.0-1630974030.glibc2.17-x86_64.AppImage codium"
+
+	#Flatpak installation
+	#local VISUAL_STUDIO_CODE="flatpak run com.visualstudio.code"
+	#local VISUAL_STUDIO_CODE="flatpak run com.vscodium.codium"
+
+	local VISUAL_STUDIO_CODE_EXTENSION_INSTALL="$VISUAL_STUDIO_CODE --install-extension"
+	local VISUAL_STUDIO_CODE_EXTENSION_LIST="$VISUAL_STUDIO_CODE --list-extensions"
+
+    display_message "Visual Studio Code/Codium installing extensions..."
+
+    ############################
+    #Midnight City night theme
+    #############################
+
+    #$VISUAL_STUDIO_CODE_EXTENSION_INSTALL ${BASH_SOURCE%/*}/dillonchanis.midnight-city-0.6.0.vsix
+    #$VISUAL_STUDIO_CODE_EXTENSION_INSTALL /tmp/dillonchanis.midnight-city-0.6.0.vsix
+    $VISUAL_STUDIO_CODE_EXTENSION_INSTALL $HOME/.dotfiles/extensions/midnight-city-0.6.0_vsixhub.com.vsix
+    
+    #############################
+    #WORKED
+    #############################
+    
+    $VISUAL_STUDIO_CODE_EXTENSION_INSTALL streetsidesoftware.code-spell-checker #Code Spell Checker
+    $VISUAL_STUDIO_CODE_EXTENSION_INSTALL formulahendry.code-runner #Code Runner
+    $VISUAL_STUDIO_CODE_EXTENSION_INSTALL dart-code.dart-code #Dart language
+    $VISUAL_STUDIO_CODE_EXTENSION_INSTALL ms-azuretools.vscode-docker #Docker
+    $VISUAL_STUDIO_CODE_EXTENSION_INSTALL dracula-theme.theme-dracula #Dracula night Theme
+    $VISUAL_STUDIO_CODE_EXTENSION_INSTALL dart-code.flutter #Flutter framework
+    $VISUAL_STUDIO_CODE_EXTENSION_INSTALL github.github-vscode-theme #GitHub light theme
+    $VISUAL_STUDIO_CODE_EXTENSION_INSTALL bierner.markdown-preview-github-styles #Markdown Preview Github Styling
+    $VISUAL_STUDIO_CODE_EXTENSION_INSTALL pkief.material-icon-theme #Material Icon theme to folders
+    
+    #############################
+    #NOT WORKED
+    #############################
+
+    ##$VISUAL_STUDIO_CODE alefragnani.bookmarks #Bookmarks
+    #$VISUAL_STUDIO_CODE_EXTENSION_INSTALL ms-vscode.cpptools #C/C++
+    #$VISUAL_STUDIO_CODE_EXTENSION_INSTALL bierner.markdown-checkbox #Markdown Checkboxes
+    #$VISUAL_STUDIO_CODE_EXTENSION_INSTALL ms-python.python #Python language
+    #$VISUAL_STUDIO_CODE_EXTENSION_INSTALL 2gua.rainbow-brackets #Rainbow Brackets
+    ##$VISUAL_STUDIO_CODE_EXTENSION_INSTALL vscodevim.vim #Vim mode
+    #$VISUAL_STUDIO_CODE_EXTENSION_INSTALL jevakallio.vscode-hacker-typer #VSCode HackerTyper record typing
 }
 
 #############################
 #Calling the functions
 #############################
 
-gtk_dracula_theme
-gtk_dracula_icons
+#gtk_dracula_theme
+#gtk_dracula_icons
+
 #eclipse_dracula_theme
 #netbeans_dracula_theme
-#visual_studio_code_extension
+visual_studio_code_extension

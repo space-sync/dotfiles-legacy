@@ -58,15 +58,15 @@ power_off_menu(){
 	)
 
 	case "$action" in
-		"None") echo "There is no selected option";;
-		"Restart Graphical Interface") i3 restart;;
-		"Rebuild dotfiles") /usr/share/lord/scripts/manager_dotfiles.sh;;
-		"Lock") $_LOCK;;
-		"Suspend") systemctl suspend && $_LOCK;;
-		"Hibernate") systemctl hibernate && $_LOCK;;
-		"Logout") i3-msg exit;;
-		"Reboot") systemctl reboot;;
-		"Shutdown") systemctl poweroff;;
+		"None") echo "There is no selected option" ;;
+		"Restart Graphical Interface") i3 restart ;;
+		"Rebuild dotfiles") $HOME/.dotfiles/testing.sh -x ;;
+		"Lock") $_LOCK ;;
+		"Suspend") systemctl suspend && $_LOCK ;;
+		"Hibernate") systemctl hibernate && $_LOCK ;;
+		"Logout") i3-msg exit ;;
+		"Reboot") systemctl reboot ;;
+		"Shutdown") systemctl poweroff ;;
 		"Shutdown with a time")
 			minutes=$(yad \
 				--text="Type how many minutes you want to shutdown the operating system" \

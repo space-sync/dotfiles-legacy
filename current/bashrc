@@ -39,4 +39,8 @@ alias python36="$HOME/.pyenv/versions/3.6-dev/bin/python3.6"
 
 export TERM=alacritty
 
-neofetch
+#alias asdf="$HOME/.asdf/asdf.sh"
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
+
+#neofetch
